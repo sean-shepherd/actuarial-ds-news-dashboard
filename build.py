@@ -188,7 +188,7 @@ TEMPLATE = r"""<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Actuarial &amp; Data Science News</title>
+<title>DB for a Better Actuary</title>
 <style>
   :root {
     --bg: #f7f7f5; --panel: #fff; --ink: #1a1a19; --muted: #6b6b66;
@@ -209,8 +209,9 @@ TEMPLATE = r"""<!doctype html>
     -webkit-font-smoothing: antialiased;
   }
   .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
-  header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.01em; }
+  header h1 { margin: 0 0 4px; font-size: 26px; letter-spacing: -.01em; }
   header p { margin: 0; color: var(--muted); font-size: 14px; }
+  .tagline { margin: 0 0 4px !important; font-size: 13.5px; }
   .hrow { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; }
   .btn {
     font: inherit; font-size: 14px; font-weight: 500; white-space: nowrap;
@@ -291,7 +292,8 @@ TEMPLATE = r"""<!doctype html>
   <header>
     <div class="hrow">
       <div>
-        <h1>Actuarial &amp; Data Science News</h1>
+        <h1>DB for a Better Actuary</h1>
+        <p class="tagline">Commercial P&amp;C and data science, daily.</p>
         <p id="sub"></p>
       </div>
       <button class="btn" id="refresh" type="button">Refresh</button>

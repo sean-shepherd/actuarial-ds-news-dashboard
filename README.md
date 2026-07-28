@@ -1,4 +1,6 @@
-# Actuarial & Data Science News Dashboard
+# DB for a Better Actuary
+
+*(Actuarial & Data Science news dashboard)*
 
 A daily-refreshed static dashboard of news relevant to actuarial science and data science:
 new methodology, industry trends, emerging risks, and open problems worth solving.
