@@ -230,7 +230,7 @@ TEMPLATE = r"""<!doctype html>
   $('sub').textContent = D.dates.length
     ? D.items.length + ' items across ' + D.dates.length + ' day' +
       (D.dates.length === 1 ? '' : 's') + ' — latest ' + D.dates[0]
-    : 'No snapshots yet. Run the news-dashboard agent to populate data/.';
+    : 'No snapshots yet. Run ./refresh.sh to populate data.';
 
   var dateSel = $('date');
   dateSel.innerHTML = '<option value="">All dates</option>' +
