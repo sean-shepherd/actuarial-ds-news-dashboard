@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Actuarial &amp; Data Science News</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --panel: #fff; --ink: #1a1a19; --muted: #6b6b66;
+    --line: #e3e3df; --accent: #1f5c8b; --chip: #eeeeea; --chip-on: #1f5c8b;
+    --chip-on-ink: #fff; --shadow: 0 1px 2px rgba(0,0,0,.05);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16171a; --panel: #1e2024; --ink: #e8e8e4; --muted: #9a9a94;
+      --line: #2e3136; --accent: #6fa8d1; --chip: #282b30; --chip-on: #6fa8d1;
+      --chip-on-ink: #16171a; --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
+  header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.01em; }
+  header p { margin: 0; color: var(--muted); font-size: 14px; }
+
+  .panel {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 16px; margin: 24px 0; box-shadow: var(--shadow);
+  }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .row + .row { margin-top: 14px; }
+  .lbl {
+    font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--muted); min-width: 92px; font-weight: 600;
+  }
+  input[type=search], select {
+    font: inherit; font-size: 14px; padding: 7px 10px; color: var(--ink);
+    background: var(--bg); border: 1px solid var(--line); border-radius: 7px;
+  }
+  input[type=search] { flex: 1 1 200px; min-width: 0; }
+  .chip {
+    font: inherit; font-size: 13px; padding: 5px 11px; cursor: pointer;
+    background: var(--chip); color: var(--ink);
+    border: 1px solid transparent; border-radius: 999px;
+  }
+  .chip[aria-pressed=true] { background: var(--chip-on); color: var(--chip-on-ink); }
+  .chip.reset { background: transparent; border-color: var(--line); color: var(--muted); }
+
+  .count { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
+  .notes {
+    margin: 0 0 24px; font-size: 13px; color: var(--muted);
+    border-left: 2px solid var(--line); padding: 2px 0 2px 12px;
+  }
+  .notes ul { margin: 4px 0 0; padding-left: 18px; }
+
+  h2.sec {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--muted); margin: 32px 0 12px; padding-bottom: 8px;
+    border-bottom: 1px solid var(--line);
+  }
+  article {
+    background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px; margin-bottom: 12px; box-shadow: var(--shadow);
+  }
+  article h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.35; }
+  article h3 a { color: var(--ink); text-decoration: none; }
+  article h3 a:hover { color: var(--accent); text-decoration: underline; }
+  .meta { font-size: 12.5px; color: var(--muted); margin-bottom: 10px; }
+  .meta b { color: var(--ink); font-weight: 600; }
+  .sum { margin: 0 0 12px; font-size: 15px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    font-size: 11.5px; padding: 3px 9px; border-radius: 999px;
+    border: 1px solid var(--line); color: var(--muted); background: var(--bg);
+  }
+  .tag.pa { border-color: var(--accent); color: var(--accent); }
+  .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+  footer { margin-top: 48px; font-size: 12px; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Actuarial &amp; Data Science News</h1>
+    <p id="sub"></p>
+  </header>
+
+  <div class="panel">
+    <div class="row">
+      <span class="lbl">Search</span>
+      <input type="search" id="q" placeholder="Headline, summary, or source…">
+      <select id="date"></select>
+      <select id="section">
+        <option value="">Both sections</option>
+        <option value="actuarial">Actuarial</option>
+        <option value="data_science">Data Science</option>
+      </select>
+    </div>
+    <div class="row"><span class="lbl">Practice</span><span id="pa" class="row"></span></div>
+    <div class="row"><span class="lbl">Business line</span><span id="bl" class="row"></span></div>
+    <div class="row">
+      <span class="lbl">Source</span>
+      <select id="source"></select>
+      <button class="chip reset" id="reset" type="button">Reset filters</button>
+    </div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div id="notes"></div>
+  <div id="list"></div>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="payload" type="application/json">{"generated": "never", "dates": [], "notes": {}, "items": []}</script>
+<script>
+(function () {
+  var D = JSON.parse(document.getElementById('payload').textContent);
+  var PA = ["Pricing", "Reserving", "Predictive Modeling", "AI/ML/Deep Learning", "ERM", "Capital Modelling", "Other"], BL = ["Personal Insurance", "Commercial Insurance", "Reinsurance", "Consulting", "Other"];
+  var state = { q: '', date: '', section: '', pa: [], bl: [], source: '' };
+
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  $('sub').textContent = D.dates.length
+    ? D.items.length + ' items across ' + D.dates.length + ' day' +
+      (D.dates.length === 1 ? '' : 's') + ' — latest ' + D.dates[0]
+    : 'No snapshots yet. Run the news-dashboard agent to populate data/.';
+
+  var dateSel = $('date');
+  dateSel.innerHTML = '<option value="">All dates</option>' +
+    D.dates.map(function (d) { return '<option value="' + d + '">' + d + '</option>'; }).join('');
+
+  var sources = D.items.map(function (i) { return i.source; })
+    .filter(function (s, n, a) { return a.indexOf(s) === n; }).sort();
+  $('source').innerHTML = '<option value="">All sources</option>' +
+    sources.map(function (s) { return '<option value="' + esc(s) + '">' + esc(s) + '</option>'; }).join('');
+
+  function chips(host, values, key) {
+    host.innerHTML = values.map(function (v) {
+      return '<button class="chip" type="button" aria-pressed="false" data-v="' + esc(v) + '">' +
+        esc(v) + '</button>';
+    }).join('');
+    host.addEventListener('click', function (e) {
+      var b = e.target.closest('.chip');
+      if (!b) return;
+      var v = b.dataset.v, on = b.getAttribute('aria-pressed') === 'true';
+      b.setAttribute('aria-pressed', on ? 'false' : 'true');
+      state[key] = on ? state[key].filter(function (x) { return x !== v; }) : state[key].concat([v]);
+      render();
+    });
+  }
+  chips($('pa'), PA, 'pa');
+  chips($('bl'), BL, 'bl');
+
+  ['q', 'date', 'section', 'source'].forEach(function (id) {
+    $(id).addEventListener('input', function (e) { state[id] = e.target.value; render(); });
+  });
+  $('reset').addEventListener('click', function () {
+    state = { q: '', date: '', section: '', pa: [], bl: [], source: '' };
+    ['q', 'date', 'section', 'source'].forEach(function (id) { $(id).value = ''; });
+    Array.prototype.forEach.call(document.querySelectorAll('.chip[aria-pressed]'), function (b) {
+      b.setAttribute('aria-pressed', 'false');
+    });
+    render();
+  });
+
+  function match(i) {
+    if (state.date && i.date !== state.date) return false;
+    if (state.section && i.section !== state.section) return false;
+    if (state.source && i.source !== state.source) return false;
+    if (state.pa.length && state.pa.indexOf(i.practiceArea) < 0) return false;
+    if (state.bl.length && (!i.businessLine || state.bl.indexOf(i.businessLine) < 0)) return false;
+    if (state.q) {
+      var hay = (i.headline + ' ' + i.summary + ' ' + i.source).toLowerCase();
+      if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
+    }
+    return true;
+  }
+
+  function card(i) {
+    var tags = '<span class="tag pa">' + esc(i.practiceArea) + '</span>' +
+      (i.businessLine ? '<span class="tag">' + esc(i.businessLine) + '</span>' : '');
+    return '<article>' +
+      '<h3><a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(i.headline) + '</a></h3>' +
+      '<div class="meta"><b>' + esc(i.source) + '</b> · published ' + esc(i.published) +
+        ' · collected ' + esc(i.date) + '</div>' +
+      '<p class="sum">' + esc(i.summary) + '</p>' +
+      '<div class="tags">' + tags + '</div>' +
+      '</article>';
+  }
+
+  function render() {
+    var shown = D.items.filter(match);
+    $('count').textContent = shown.length + ' of ' + D.items.length + ' items';
+
+    var notes = [];
+    (state.date ? [state.date] : D.dates).forEach(function (d) {
+      (D.notes[d] || []).forEach(function (n) { notes.push(d + ' — ' + n); });
+    });
+    $('notes').innerHTML = notes.length
+      ? '<div class="notes"><strong>Run notes</strong><ul>' +
+        notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul></div>'
+      : '';
+
+    if (!shown.length) {
+      $('list').innerHTML = '<p class="empty">Nothing matches these filters.</p>';
+      return;
+    }
+    var html = '';
+    [['actuarial', 'Actuarial'], ['data_science', 'Data Science']].forEach(function (s) {
+      var group = shown.filter(function (i) { return i.section === s[0]; });
+      if (!group.length) return;
+      html += '<h2 class="sec">' + s[1] + ' · ' + group.length + '</h2>' +
+        group.map(card).join('');
+    });
+    $('list').innerHTML = html;
+  }
+
+  $('foot').textContent = 'Generated ' + D.generated + ' by build.py · static file, no runtime dependencies';
+  render();
+})();
+</script>
+</body>
+</html>
