@@ -62,7 +62,57 @@ was published there," which is a different claim.
 If a paywall blocks the body (InsuranceERM often does), do not summarize from the headline. Either find a
 free equivalent covering the same story, or drop the item and note the paywall.
 
-### 3. Filter for relevance
+### 3a. Scope filter — Actuarial section is commercial P&C only
+
+This applies to **all six actuarial sources**, SOA included. Apply it at collection time, before you
+spend a fetch reading the full article — screen on the feed title and summary, and drop early.
+
+The subject of the item must be **commercial (business-insured) property & casualty insurance**.
+
+**Keep:**
+- Commercial property, business interruption, commercial multi-peril.
+- Liability lines — general, product, professional/E&O, D&O, employment practices, cyber liability.
+- Workers' compensation.
+- Commercial auto and fleet.
+- Specialty and E&S — marine, aviation, energy, construction, credit and surety, political risk.
+- Pricing, reserving, capital, regulatory, standards, or ERM work *as applied to commercial P&C lines*.
+- Emerging commercial exposures — cyber, climate and wildfire liability, social inflation, nuclear
+  verdicts, AI and algorithmic liability, PFAS and latent mass torts.
+- Commercial catastrophe exposure where the insured is a business.
+
+**Drop:**
+- Life, annuities, mortality and longevity, retirement and pensions.
+- Health — individual, Medicare/Medicaid, and group health or employee benefits. Group and employer-
+  sponsored life and health are life/health business and are **out of scope** under this filter,
+  notwithstanding that the policyholder is an employer.
+- Personal lines — personal auto, homeowners, renters, personal umbrella, pet, travel.
+- Reinsurance and ILS **when the substance is capital-markets mechanics** — cat bond issuance and
+  pricing, sidecar and collateral structures, reinsurer capital raising, ILS fund flows. Keep a
+  reinsurance item only when its substance is the underlying commercial P&C exposure, pricing, or
+  reserving.
+- Professional/industry-body news with no line-of-business content — appointments, exam schedules,
+  conference announcements, obituaries.
+
+**Consequences you should expect and must not paper over.** This filter is narrow, and two things
+follow from it:
+
+- **SOA will often yield nothing.** SOA is the life and health body; its commercial P&C output is
+  thin. An empty SOA slot is the correct result, not a fetch failure — say which it was in `run_notes`.
+- **Artemis will lose most of its items**, since it is largely ILS and cat-bond deal flow.
+
+So the Actuarial section will frequently land below the 5–8 target. That is expected. **Do not pad,
+do not relax the filter to hit a count, and do not smuggle a life or personal-lines item in by
+arguing it has commercial relevance.** Record the shortfall in `run_notes` with the count you dropped
+per source, e.g. `"SOA: 4 items in window, all life/health — 0 kept under commercial P&C filter"`.
+
+Because of this filter, `business_line` on Actuarial items will nearly always be `Commercial Insurance`,
+sometimes `Reinsurance` or `Other`. `Personal Insurance` should essentially never appear; if you find
+yourself reaching for it, the item probably fails the filter.
+
+The Data Science section is **not** subject to this filter — keep applying 3b below. Where two papers
+are otherwise equally relevant, prefer the one with a commercial-lines application.
+
+### 3b. Filter for relevance
 
 arXiv cs.LG/stat.ML publish hundreds of papers a day. Keep only what an actuary or insurance data
 scientist would act on:
@@ -117,7 +167,8 @@ run again — say so explicitly in the summary.
 ### 7. Write the snapshot
 
 Target 5–8 items per section. Fewer is correct on a slow day — never pad with filler or with items outside
-the window. If a section comes up short, note why in `run_notes`.
+the window. If a section comes up short, note why in `run_notes`. For the Actuarial section, coming up
+short is the normal case under the §3a commercial P&C filter, not a problem to solve by loosening it.
 
 Write `data/YYYY-MM-DD.json`:
 

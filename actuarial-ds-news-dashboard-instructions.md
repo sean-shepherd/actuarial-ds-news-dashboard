@@ -28,6 +28,24 @@ Sources:
 
 Use RSS/API where available; fall back to scraping only if no feed exists.
 
+## Scope filter — Actuarial section is commercial P&C only
+(Added 2026-07-28, supersedes the broader source scope above.)
+
+Every item in the Actuarial section must concern **commercial (business-insured) property & casualty
+insurance**. Applies to all six actuarial sources, SOA included, and is applied at collection time.
+
+Out of scope: life, annuities, mortality/longevity, retirement/pensions; health of any kind, including
+group and employer-sponsored benefits; all personal lines; and reinsurance/ILS where the substance is
+capital-markets mechanics rather than the underlying commercial exposure.
+
+This filter is deliberately narrow. SOA will often yield zero items, since it is the life and health
+body, and Artemis will lose most of its ILS deal flow. The Actuarial section is therefore expected to
+run below the 5–8 target on many days. Do not pad to reach the target and do not relax the filter to
+fill space — report the shortfall instead. See `.claude/agents/news-dashboard.md` §3a for the full
+keep/drop lists.
+
+The Data Science section is not subject to this filter.
+
 ## Cadence
 Daily refresh. Only surface items published in the last 24–48 hours; dedupe against previous runs.
 
