@@ -63,10 +63,10 @@ Daily refresh, with a different lookback per section (changed 2026-07-28):
   48-hour window was rejecting genuinely relevant items that were merely three or four days old.
 - **Data Science — 24–48 hours.** arXiv publishes daily; a wider window here just adds noise.
 
-Each refresh should add newly discovered items from the current lookback window while preserving a historical baseline spanning the last three years. Dedupe against previous runs, which is what stops the wider Actuarial window from re-surfacing the same item for seven consecutive days. The dedupe ledger is doing real work now, so do not reset it casually.
+Each refresh should add newly discovered items from the current lookback window while preserving a historical baseline spanning the last three years. The dashboard should support filtering by published quarter rather than by recent day counts, so older historical items remain easily discoverable alongside freshly added ones. Dedupe against previous runs, which is what stops the wider Actuarial window from re-surfacing the same item for seven consecutive days. The dedupe ledger is doing real work now, so do not reset it casually.
 
 ## Content depth
-Don't over-read the material. Treat this as a lightweight headline-first dashboard: screen each headline and brief source description for actuarial/data-science relevance and commercial-insurance fit, then provide a short summary and a link for more information. The goal is not to reproduce the full article or paper, and summaries should stay concise (1–2 sentences) rather than substantive deep dives.
+Don't over-read the material. Treat this as a lightweight headline-first dashboard: screen each headline and brief source description for actuarial/data-science relevance and commercial-insurance fit, then provide a 3-sentence summary and a link for more information. The goal is not to reproduce the full article or paper, and summaries should stay concise rather than substantive deep dives.
 
 ## Tagging (apply to every item)
 Tag each item with:
@@ -79,7 +79,7 @@ Tag Data Science items with practice area only where relevant to actuarial work 
 Use Claude to assign tags from the headline and brief source context, and have it pick the best-fit practice area, business line (or "Other"), and item type rather than relying on keyword matching.
 
 ## Output structure
-Two top-level sections: Actuarial, Data Science. Within each, list items with their tags shown (not separate subsections per tag combo — use tags as filter/sort controls). Keep a historical baseline spanning the last three years, and on each refresh add newly discovered items from the last 24–48 hours. Each item: headline (linked to source URL), short summary, practice area tag, business line tag (Actuarial only), item-type tag, source name, published date.
+Two top-level sections: Actuarial, Data Science. Within each, list items with their tags shown (not separate subsections per tag combo — use tags as filter/sort controls). Keep a historical baseline spanning the last three years, and on each refresh add newly discovered items from the last 24–48 hours. Each item: headline (linked to source URL), 3-sentence summary, practice area tag, business line tag (Actuarial only), item-type tag, source name, published date. Do not show run notes in the dashboard UI.
 
 ## Format
 Single-page HTML dashboard, static file, no external runtime dependencies beyond CDN-loaded CSS/JS if needed. Include client-side filter controls for practice area and business line. Store daily snapshots so history isn't lost on refresh.

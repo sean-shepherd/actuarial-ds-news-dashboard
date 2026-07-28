@@ -222,9 +222,9 @@ it is relevant. The goal is to decide whether the item looks like:
 - commercial insurance relevance where applicable,
 - and a fit for the dashboard as a link to more information.
 
-Then write a **short summary** — ideally one concise sentence or two — that explains why the headline
-appears relevant. No deep reading is required, and no detailed methodology extraction is needed. If the
-headline is too vague or clearly off-topic, drop it.
+Then write a **3-sentence summary** that explains why the headline appears relevant. No deep reading is
+required, and no detailed methodology extraction is needed. If the headline is too vague or clearly
+off-topic, drop it.
 
 ### 5. Tag and classify
 
@@ -255,6 +255,8 @@ run again — say so explicitly in the summary.
 Target 5–8 items per section. Fewer is correct on a slow day — never pad with filler or with items outside
 the window. If a section comes up short, note why in `run_notes`. For the Actuarial section, coming up
 short is the normal case under the §3a commercial P&C filter, not a problem to solve by loosening it.
+
+The dashboard should not display run notes; only the filtered item list should appear in the UI.
 
 Write `data/YYYY-MM-DD.json` with an `item_type` field on each item:
 

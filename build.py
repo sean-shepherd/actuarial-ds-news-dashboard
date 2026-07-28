@@ -255,7 +255,6 @@ TEMPLATE = r"""<!doctype html>
   </div>
 
   <p class="count" id="count"></p>
-  <div id="notes"></div>
   <div id="list"></div>
 
   <footer id="foot"></footer>
@@ -281,10 +280,10 @@ TEMPLATE = r"""<!doctype html>
     : 'No snapshots yet. Run ./refresh.sh to populate data.';
 
   var publishedDateSel = $('publishedDate');
-  var publishedDates = D.items.map(function (i) { return i.published; })
-    .filter(function (d, n, a) { return a.indexOf(d) === n; }).sort().reverse();
-  publishedDateSel.innerHTML = '<option value="">All published dates</option>' +
-    publishedDates.map(function (d) { return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('');
+  var quarters = D.items.map(function (i) { return i.published ? i.published.slice(0, 4) + ' Q' + Math.ceil(parseInt(i.published.slice(5, 7), 10) / 3) : null; })
+    .filter(function (q, n, a) { return q && a.indexOf(q) === n; }).sort().reverse();
+  publishedDateSel.innerHTML = '<option value="">All published quarters</option>' +
+    quarters.map(function (q) { return '<option value="' + esc(q) + '">' + esc(q) + '</option>'; }).join('');
 
   var sources = D.items.map(function (i) { return i.source; })
     .filter(function (s, n, a) { return a.indexOf(s) === n; }).sort();
@@ -349,8 +348,8 @@ TEMPLATE = r"""<!doctype html>
     if (e.key === 'Enter') { e.preventDefault(); addSearchItem(); }
   });
   $('reset').addEventListener('click', function () {
-    state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
-    ['q', 'date', 'section', 'source'].forEach(function (id) { $(id).value = ''; });
+    state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '' };
+    ['q', 'publishedDate', 'section', 'source'].forEach(function (id) { $(id).value = ''; });
     Array.prototype.forEach.call(document.querySelectorAll('.chip[aria-pressed]'), function (b) {
       b.setAttribute('aria-pressed', 'false');
     });
@@ -358,7 +357,8 @@ TEMPLATE = r"""<!doctype html>
   });
 
   function match(i) {
-    if (state.publishedDate && i.published !== state.publishedDate) return false;
+    var publishQuarter = i.published ? i.published.slice(0, 4) + ' Q' + Math.ceil(parseInt(i.published.slice(5, 7), 10) / 3) : null;
+    if (state.publishedDate && publishQuarter !== state.publishedDate) return false;
     if (state.section && i.section !== state.section) return false;
     if (state.source && i.source !== state.source) return false;
     if (state.pa.length && state.pa.indexOf(i.practiceArea) < 0) return false;
@@ -387,15 +387,6 @@ TEMPLATE = r"""<!doctype html>
   function render() {
     var shown = D.items.filter(match);
     $('count').textContent = shown.length + ' of ' + D.items.length + ' items';
-
-    var notes = [];
-    (state.publishedDate ? [state.publishedDate] : D.dates).forEach(function (d) {
-      (D.notes[d] || []).forEach(function (n) { notes.push(d + ' — ' + n); });
-    });
-    $('notes').innerHTML = notes.length
-      ? '<div class="notes"><strong>Run notes</strong><ul>' +
-        notes.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul></div>'
-      : '';
 
     if (!shown.length) {
       $('list').innerHTML = '<p class="empty">Nothing matches these filters.</p>';
