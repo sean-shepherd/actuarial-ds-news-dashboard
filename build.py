@@ -98,17 +98,19 @@ def merge_database_items(existing_items, new_items):
         key = item.get("url") or "%s|%s|%s" % (item.get("source", ""), item.get("headline", ""), item.get("published", ""))
         if key in by_key:
             existing = by_key[key]
-            existing["lastSeen"] = item.get("lastSeen") or existing.get("lastSeen")
+            existing["lastSeen"] = item.get("lastSeen") or existing.get("lastSeen") or item.get("date") or existing.get("date")
             seen_in = list(existing.get("seenIn") or [])
             for date in item.get("seenIn") or []:
                 if date not in seen_in:
                     seen_in.append(date)
             existing["seenIn"] = sorted(seen_in)
-            for field in ["date", "section", "sectionLabel", "headline", "url", "source", "published", "summary", "practiceArea", "businessLine", "itemType", "sortOrder"]:
+            for field in ["section", "sectionLabel", "headline", "url", "source", "published", "summary", "practiceArea", "businessLine", "itemType", "sortOrder"]:
                 if field in item and item[field] is not None:
                     existing[field] = item[field]
             if not existing.get("firstSeen"):
                 existing["firstSeen"] = item.get("firstSeen") or item.get("date")
+            if not existing.get("date"):
+                existing["date"] = item.get("date")
             continue
         merged.append(item)
         by_key[key] = item

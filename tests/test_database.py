@@ -34,26 +34,29 @@ class DatabasePersistenceTests(unittest.TestCase):
 
             new_items = [
                 {
-                    "headline": "New item",
-                    "url": "https://example.com/new",
+                    "headline": "Existing item",
+                    "url": "https://example.com/old",
                     "source": "Example",
                     "published": "2026-07-28",
-                    "summary": "New summary",
+                    "summary": "Updated summary",
                     "practiceArea": "AI/ML/Deep Learning",
                     "businessLine": None,
                     "itemType": "Research",
                     "section": "data_science",
                     "sortOrder": 2,
-                    "firstSeen": "2026-07-28",
+                    "firstSeen": "2024-01-01",
                     "lastSeen": "2026-07-28",
-                    "seenIn": ["2026-07-28"],
+                    "seenIn": ["2024-01-01", "2026-07-28"],
                 }
             ]
             merged = build.merge_database_items(existing, new_items)
 
-            self.assertEqual(len(merged), 2)
-            self.assertEqual(merged[0]["headline"], "Existing item")
-            self.assertEqual(merged[1]["headline"], "New item")
+            self.assertEqual(len(merged), 1)
+            existing_item = merged[0]
+            self.assertEqual(existing_item["headline"], "Existing item")
+            self.assertEqual(existing_item["firstSeen"], "2024-01-01")
+            self.assertEqual(existing_item["lastSeen"], "2026-07-28")
+            self.assertEqual(existing_item["seenIn"], ["2024-01-01", "2026-07-28"])
 
 
 if __name__ == "__main__":
