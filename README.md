@@ -7,7 +7,10 @@ new methodology, industry trends, emerging risks, and open problems worth solvin
 
 ## How it works
 
-A scheduled Claude Code cloud agent runs every morning at 8:00 AM Eastern. It:
+A scheduled Claude Code cloud agent runs every morning at 8:00 AM Toronto time, year-round.
+(Cron is UTC-only and can't follow daylight saving, so the routine fires at both 12:00 and 13:00
+UTC and no-ops whichever firing isn't 8:00 AM local — see [`.claude/routine.json`](.claude/routine.json).)
+Each run:
 
 1. Fetches the sources listed in [`actuarial-ds-news-dashboard-instructions.md`](actuarial-ds-news-dashboard-instructions.md)
    (RSS/API where available, scraping only as fallback).
