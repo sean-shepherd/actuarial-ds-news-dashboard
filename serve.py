@@ -16,6 +16,7 @@ import argparse
 import json
 import subprocess
 import threading
+from datetime import datetime, timezone
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -54,6 +55,48 @@ def _run_refresh(push):
         )
 
 
+def _add_search_item(payload):
+    keyword = (payload.get("keyword") or "").strip()
+    item_type = payload.get("itemType") or "News"
+    if not keyword:
+        return False, "enter a keyword"
+
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    snap_path = ROOT / "data" / f"{today}.json"
+    if snap_path.exists():
+        data = json.loads(snap_path.read_text(encoding="utf-8"))
+    else:
+        data = {
+            "date": today,
+            "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+            "window": f"{today}..{today}",
+            "sections": {"actuarial": [], "data_science": []},
+            "run_notes": [],
+        }
+
+    sections = data.setdefault("sections", {})
+    section = "actuarial" if item_type in {"News", "Article", "Publication"} else "data_science"
+    if section not in sections:
+        sections[section] = []
+
+    item = {
+        "headline": f"{keyword} — {item_type}",
+        "url": f"https://example.com/search?q={keyword}",
+        "source": "User Added",
+        "published": today,
+        "summary": f"User requested a {item_type.lower()} related to \"{keyword}\".",
+        "practice_area": "Other",
+        "business_line": "Other" if section == "actuarial" else None,
+        "item_type": item_type,
+        "sort_order": 1000000,
+    }
+    sections[section].append(item)
+    snap_path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+    rc = subprocess.call(["python3", "build.py"], cwd=str(ROOT))
+    return rc == 0, ""
+
+
 class Handler(SimpleHTTPRequestHandler):
     push = False
 
@@ -73,16 +116,29 @@ class Handler(SimpleHTTPRequestHandler):
         SimpleHTTPRequestHandler.end_headers(self)
 
     def do_POST(self):
-        if self.path.rstrip("/") != "/api/refresh":
-            self.send_error(404)
+        if self.path.rstrip("/") == "/api/refresh":
+            with _lock:
+                if _job["state"] == "running":
+                    self._json({"state": "busy"})
+                    return
+                _job.update(state="running", last="starting")
+            threading.Thread(target=_run_refresh, args=(self.push,), daemon=True).start()
+            self._json({"state": "running"})
             return
-        with _lock:
-            if _job["state"] == "running":
-                self._json({"state": "busy"})
+
+        if self.path.rstrip("/") == "/api/search/add":
+            length = int(self.headers.get("Content-Length", "0"))
+            body = self.rfile.read(length).decode("utf-8") if length else "{}"
+            try:
+                payload = json.loads(body) if body else {}
+            except json.JSONDecodeError:
+                self._json({"ok": False, "error": "invalid JSON"}, 400)
                 return
-            _job.update(state="running", last="starting")
-        threading.Thread(target=_run_refresh, args=(self.push,), daemon=True).start()
-        self._json({"state": "running"})
+            ok, error = _add_search_item(payload)
+            self._json({"ok": ok, "error": error})
+            return
+
+        self.send_error(404)
 
     def do_GET(self):
         if self.path.rstrip("/") == "/api/refresh/status":

@@ -117,8 +117,19 @@
   <div class="panel">
     <div class="row">
       <span class="lbl">Search</span>
-      <input type="search" id="q" placeholder="Headline, summary, or source…">
-      <select id="date"></select>
+      <input type="search" id="searchQuery" placeholder="Add a keyword to the database…">
+      <select id="searchType">
+        <option value="News">News</option>
+        <option value="Article">Article</option>
+        <option value="Research">Research</option>
+        <option value="Publication">Publication</option>
+      </select>
+      <button class="chip" id="addSearch" type="button">Add to database</button>
+    </div>
+    <div class="row">
+      <span class="lbl">Filter</span>
+      <input type="search" id="q" placeholder="Filter current items…">
+      <select id="publishedDate"></select>
       <select id="section">
         <option value="">Both sections</option>
         <option value="actuarial">Actuarial</option>
@@ -142,12 +153,12 @@
   <footer id="foot"></footer>
 </div>
 
-<script id="payload" type="application/json">{"generated": "2026-07-28", "dates": ["2026-07-28"], "notes": {"2026-07-28": ["Window used: 2026-07-26..2026-07-28 (48h), per explicit instruction for this run.", "SOA: checked homepage, /resources/newsroom/, and /research/topics/general-ins-landing/ (the old /news-and-publications/ URL 404'd). Most recent P&C-adjacent item was the March 2026 Emerging Risks Survey (CAS/SOA joint) — outside the window. General-insurance research listing showed only 2023-2025 dated publications. 0 kept — expected result per §3a, SOA is the life/health body.", "IFoA: homepage nav surfaced 3 recent headlines (retirement-outcomes roadmap, Mansion House briefing, Finlaison Medal award), all dated 13-16 July — outside the 48h window, and none is commercial-P&C-specific. The guessed /news-and-media-releases/ list URL 404'd; not retried further (one-retry rule). 0 kept.", "InsuranceERM: both /news and the bare homepage returned HTTP 403 (Cloudflare/access block) on two separate attempts. Per revised spec this is treated as an access issue, not a fetch failure, and was not retried a third time. 0 items — headline evidence unavailable.", "The Actuary Magazine: feed returned 10 items dated 9 June - 16 July, all outside the 48h window and all life/retirement/organizational content (SOA leadership, AI-in-study-habits, Japan reflections, brand refresh). 0 kept.", "CAS: 7 items surfaced in/near window; kept 2 (AI Primer 2nd edition; Variance Prize on credibility theory + ML). Dropped: NAIC homeowners rate-regulation white paper (personal lines, out of scope), webinar-subscription/exam-registration/volunteer-award/career-changer items (no line-of-business content).", "Artemis: 10 feed items, all dated 27-28 July (in window). Kept 1 (Munich Re Specialty parametric earthquake cover for Japanese corporates). Dropped 9: 6 were cat-bond/ILS capital-markets mechanics (secondary trading, issuance momentum, UCITS fund AUM, tokenised ILS, transaction-process commentary), 1 was a UK pension longevity swap (life/pensions, out of scope), 1 (First Street GDP/SCS exposure report) was insufficiently commercial-specific to keep, 1 (Kumamoto earthquake damage report) lacked clear commercial-insurance framing.", "Actuarial section total: 3 items vs the 5-8 target. Expected under the §3a commercial P&C filter combined with the strict 48h window — not padded.", "arXiv cs.LG / stat.ML: export API worked via WebFetch; two follow-up stat.ML queries hit HTTP 429 (rate limited) and were not retried further. Relied on the initial successful fetches (60-100 results each), filtered to 26-28 July. Several strong-looking candidates (conformal-prediction forecasting, causal forests, tabular generative models) were dated 24-25 July and excluded as outside the window.", "Hugging Face Papers: today's trending list is dominated by frontier-LLM, robotics-survey, and computer-use-agent papers; nothing tabular/time-series/insurance-relevant. 0 kept.", "Google Research blog: 5 most recent posts (7-22 July) are outside the 48h window and off-topic (health symptom AI, quantum error correction, diffusion-model creativity, wearable health, traffic congestion). 0 kept.", "Towards Data Science: the on-topic 'Tabular LLMs' piece was dated 24 July, outside the 48h window, and was excluded; kept only the 28 July Adam-optimizer piece."]}, "items": [{"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Debiased Machine Learning: Identification, Estimation, and Shape Constraints", "url": "https://arxiv.org/abs/2607.24472", "source": "arXiv stat.ML", "published": "2026-07-27", "summary": "Extends automatic debiased ML to shape-constrained settings with endogeneity, correcting regularization bias when nuisance functions are ML-estimated — useful for causal estimation in pricing and reserving work.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research"}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "On Non-Stationary Dynamic Pricing: Adaptivity and Optimality", "url": "https://arxiv.org/abs/2607.24115", "source": "arXiv stat.ML", "published": "2026-07-27", "summary": "Adaptive contextual pricing algorithm with change-point detection achieves best-of-both-worlds regret under unknown non-stationarity — directly relevant to actuarial rate adaptation and usage-based pricing schemes.", "practiceArea": "Pricing", "businessLine": null, "itemType": "Research"}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Learning Switched Non-Linear Dynamical Systems from a Single Trajectory", "url": "https://arxiv.org/abs/2607.23502", "source": "arXiv stat.ML", "published": "2026-07-26", "summary": "Non-asymptotic bounds for learning regime-switching dynamics from one observed trajectory — relevant to modeling regime shifts in claims frequency, mortality trends, or economic scenario generation.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research"}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Low-Rank Dependence Decomposition via Accelerated Symmetric Non-negative Matrix Factorization", "url": "https://arxiv.org/abs/2607.24518", "source": "arXiv cs.LG", "published": "2026-07-27", "summary": "GPU-scalable symmetric NMF for extracting tail-dependence structure from large correlation matrices via extreme value theory — applicable to portfolio and catastrophe risk-factor estimation at scale.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research"}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Causal-TS: A Python Library for Causal Discovery in High-Dimensional and Nonstationary Time Series", "url": "https://arxiv.org/abs/2607.24673", "source": "arXiv cs.LG", "published": "2026-07-27", "summary": "Open-source library for causal discovery with regime detection in multivariate nonstationary time series — a practical tool for investigating causal drivers behind shifting loss trends.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research"}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Don't Just \"Throw Adam at It\": Misunderstanding Adam Will Cost You", "url": "https://towardsdatascience.com/dont-just-throw-adam-at-it-misunderstanding-adam-will-cost-you/", "source": "Towards Data Science", "published": "2026-07-28", "summary": "Explainer on how misunderstanding the Adam optimizer's dynamics leads to poorly tuned neural nets — practical reading for teams building deep learning models on tabular actuarial data.", "practiceArea": "AI/ML/Deep Learning", "businessLine": null, "itemType": "Article"}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "Second Edition of the CAS AI Primer Now Available", "url": "https://www.casact.org/article/second-edition-cas-ai-primer-now-available", "source": "CAS", "published": "2026-07-27", "summary": "CAS released an updated primer on AI use in actuarial practice, expanding guidance as AI adoption accelerates — a reference point for P&C actuaries navigating AI/ML in pricing, reserving, and underwriting.", "practiceArea": "AI/ML/Deep Learning", "businessLine": "Commercial Insurance", "itemType": "Publication"}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "2025 Variance Prize Honors Research on Credibility Theory and Machine Learning", "url": "https://www.casact.org/article/2025-variance-prize-honors-research-credibility-theory-and-machine-learning", "source": "CAS", "published": "2026-07-27", "summary": "CAS's Variance journal prize went to a paper on adjusting manual rates to own experience, blending classical credibility theory with machine learning — directly relevant to commercial-lines ratemaking.", "practiceArea": "Pricing", "businessLine": "Commercial Insurance", "itemType": "News"}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "Munich Re Specialty launches parametric earthquake insurance for corporates in Japan", "url": "https://www.artemis.bm/news/munich-re-specialty-launches-parametric-earthquake-insurance-corporates-in-japan/", "source": "Artemis", "published": "2026-07-28", "summary": "New parametric earthquake cover for Japanese corporate clients via the Lloyd's Japan platform, offering rapid post-quake liquidity — a commercial property product launch amid this week's Kumamoto earthquake.", "practiceArea": "Other", "businessLine": "Commercial Insurance", "itemType": "News"}]}</script>
+<script id="payload" type="application/json">{"generated": "2026-07-28", "dates": ["2026-07-28"], "notes": {"2026-07-28": ["Window used: 2026-07-26..2026-07-28 (48h), per explicit instruction for this run.", "SOA: checked homepage, /resources/newsroom/, and /research/topics/general-ins-landing/ (the old /news-and-publications/ URL 404'd). Most recent P&C-adjacent item was the March 2026 Emerging Risks Survey (CAS/SOA joint) — outside the window. General-insurance research listing showed only 2023-2025 dated publications. 0 kept — expected result per §3a, SOA is the life/health body.", "IFoA: homepage nav surfaced 3 recent headlines (retirement-outcomes roadmap, Mansion House briefing, Finlaison Medal award), all dated 13-16 July — outside the 48h window, and none is commercial-P&C-specific. The guessed /news-and-media-releases/ list URL 404'd; not retried further (one-retry rule). 0 kept.", "InsuranceERM: both /news and the bare homepage returned HTTP 403 (Cloudflare/access block) on two separate attempts. Per revised spec this is treated as an access issue, not a fetch failure, and was not retried a third time. 0 items — headline evidence unavailable.", "The Actuary Magazine: feed returned 10 items dated 9 June - 16 July, all outside the 48h window and all life/retirement/organizational content (SOA leadership, AI-in-study-habits, Japan reflections, brand refresh). 0 kept.", "CAS: 7 items surfaced in/near window; kept 2 (AI Primer 2nd edition; Variance Prize on credibility theory + ML). Dropped: NAIC homeowners rate-regulation white paper (personal lines, out of scope), webinar-subscription/exam-registration/volunteer-award/career-changer items (no line-of-business content).", "Artemis: 10 feed items, all dated 27-28 July (in window). Kept 1 (Munich Re Specialty parametric earthquake cover for Japanese corporates). Dropped 9: 6 were cat-bond/ILS capital-markets mechanics (secondary trading, issuance momentum, UCITS fund AUM, tokenised ILS, transaction-process commentary), 1 was a UK pension longevity swap (life/pensions, out of scope), 1 (First Street GDP/SCS exposure report) was insufficiently commercial-specific to keep, 1 (Kumamoto earthquake damage report) lacked clear commercial-insurance framing.", "Actuarial section total: 3 items vs the 5-8 target. Expected under the §3a commercial P&C filter combined with the strict 48h window — not padded.", "arXiv cs.LG / stat.ML: export API worked via WebFetch; two follow-up stat.ML queries hit HTTP 429 (rate limited) and were not retried further. Relied on the initial successful fetches (60-100 results each), filtered to 26-28 July. Several strong-looking candidates (conformal-prediction forecasting, causal forests, tabular generative models) were dated 24-25 July and excluded as outside the window.", "Hugging Face Papers: today's trending list is dominated by frontier-LLM, robotics-survey, and computer-use-agent papers; nothing tabular/time-series/insurance-relevant. 0 kept.", "Google Research blog: 5 most recent posts (7-22 July) are outside the 48h window and off-topic (health symptom AI, quantum error correction, diffusion-model creativity, wearable health, traffic congestion). 0 kept.", "Towards Data Science: the on-topic 'Tabular LLMs' piece was dated 24 July, outside the 48h window, and was excluded; kept only the 28 July Adam-optimizer piece."]}, "items": [{"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Don't Just \"Throw Adam at It\": Misunderstanding Adam Will Cost You", "url": "https://towardsdatascience.com/dont-just-throw-adam-at-it-misunderstanding-adam-will-cost-you/", "source": "Towards Data Science", "published": "2026-07-28", "summary": "Explainer on how misunderstanding the Adam optimizer's dynamics leads to poorly tuned neural nets — practical reading for teams building deep learning models on tabular actuarial data.", "practiceArea": "AI/ML/Deep Learning", "businessLine": null, "itemType": "Article", "sortOrder": 0}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "Munich Re Specialty launches parametric earthquake insurance for corporates in Japan", "url": "https://www.artemis.bm/news/munich-re-specialty-launches-parametric-earthquake-insurance-corporates-in-japan/", "source": "Artemis", "published": "2026-07-28", "summary": "New parametric earthquake cover for Japanese corporate clients via the Lloyd's Japan platform, offering rapid post-quake liquidity — a commercial property product launch amid this week's Kumamoto earthquake.", "practiceArea": "Other", "businessLine": "Commercial Insurance", "itemType": "News", "sortOrder": 0}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Debiased Machine Learning: Identification, Estimation, and Shape Constraints", "url": "https://arxiv.org/abs/2607.24472", "source": "arXiv stat.ML", "published": "2026-07-27", "summary": "Extends automatic debiased ML to shape-constrained settings with endogeneity, correcting regularization bias when nuisance functions are ML-estimated — useful for causal estimation in pricing and reserving work.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research", "sortOrder": 0}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "On Non-Stationary Dynamic Pricing: Adaptivity and Optimality", "url": "https://arxiv.org/abs/2607.24115", "source": "arXiv stat.ML", "published": "2026-07-27", "summary": "Adaptive contextual pricing algorithm with change-point detection achieves best-of-both-worlds regret under unknown non-stationarity — directly relevant to actuarial rate adaptation and usage-based pricing schemes.", "practiceArea": "Pricing", "businessLine": null, "itemType": "Research", "sortOrder": 0}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Low-Rank Dependence Decomposition via Accelerated Symmetric Non-negative Matrix Factorization", "url": "https://arxiv.org/abs/2607.24518", "source": "arXiv cs.LG", "published": "2026-07-27", "summary": "GPU-scalable symmetric NMF for extracting tail-dependence structure from large correlation matrices via extreme value theory — applicable to portfolio and catastrophe risk-factor estimation at scale.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research", "sortOrder": 0}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Causal-TS: A Python Library for Causal Discovery in High-Dimensional and Nonstationary Time Series", "url": "https://arxiv.org/abs/2607.24673", "source": "arXiv cs.LG", "published": "2026-07-27", "summary": "Open-source library for causal discovery with regime detection in multivariate nonstationary time series — a practical tool for investigating causal drivers behind shifting loss trends.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research", "sortOrder": 0}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "Second Edition of the CAS AI Primer Now Available", "url": "https://www.casact.org/article/second-edition-cas-ai-primer-now-available", "source": "CAS", "published": "2026-07-27", "summary": "CAS released an updated primer on AI use in actuarial practice, expanding guidance as AI adoption accelerates — a reference point for P&C actuaries navigating AI/ML in pricing, reserving, and underwriting.", "practiceArea": "AI/ML/Deep Learning", "businessLine": "Commercial Insurance", "itemType": "Publication", "sortOrder": 0}, {"date": "2026-07-28", "section": "actuarial", "sectionLabel": "Actuarial", "headline": "2025 Variance Prize Honors Research on Credibility Theory and Machine Learning", "url": "https://www.casact.org/article/2025-variance-prize-honors-research-credibility-theory-and-machine-learning", "source": "CAS", "published": "2026-07-27", "summary": "CAS's Variance journal prize went to a paper on adjusting manual rates to own experience, blending classical credibility theory with machine learning — directly relevant to commercial-lines ratemaking.", "practiceArea": "Pricing", "businessLine": "Commercial Insurance", "itemType": "News", "sortOrder": 0}, {"date": "2026-07-28", "section": "data_science", "sectionLabel": "Data Science", "headline": "Learning Switched Non-Linear Dynamical Systems from a Single Trajectory", "url": "https://arxiv.org/abs/2607.23502", "source": "arXiv stat.ML", "published": "2026-07-26", "summary": "Non-asymptotic bounds for learning regime-switching dynamics from one observed trajectory — relevant to modeling regime shifts in claims frequency, mortality trends, or economic scenario generation.", "practiceArea": "Predictive Modeling", "businessLine": null, "itemType": "Research", "sortOrder": 0}]}</script>
 <script>
 (function () {
   var D = JSON.parse(document.getElementById('payload').textContent);
   var PA = ["Pricing", "Reserving", "Predictive Modeling", "AI/ML/Deep Learning", "ERM", "Capital Modelling", "Other"], BL = ["Personal Insurance", "Commercial Insurance", "Reinsurance", "Consulting", "Other"], IT = ["Publication", "Research", "Article", "News"];
-  var state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
+  var state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '' };
 
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) {
@@ -161,9 +172,11 @@
       (D.dates.length === 1 ? '' : 's') + ' — latest ' + D.dates[0]
     : 'No snapshots yet. Run ./refresh.sh to populate data.';
 
-  var dateSel = $('date');
-  dateSel.innerHTML = '<option value="">All dates</option>' +
-    D.dates.map(function (d) { return '<option value="' + d + '">' + d + '</option>'; }).join('');
+  var publishedDateSel = $('publishedDate');
+  var publishedDates = D.items.map(function (i) { return i.published; })
+    .filter(function (d, n, a) { return a.indexOf(d) === n; }).sort().reverse();
+  publishedDateSel.innerHTML = '<option value="">All published dates</option>' +
+    publishedDates.map(function (d) { return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('');
 
   var sources = D.items.map(function (i) { return i.source; })
     .filter(function (s, n, a) { return a.indexOf(s) === n; }).sort();
@@ -188,8 +201,44 @@
   chips($('bl'), BL, 'bl');
   chips($('it'), IT, 'itemType');
 
-  ['q', 'date', 'section', 'source'].forEach(function (id) {
+  ['q', 'publishedDate', 'section', 'source'].forEach(function (id) {
     $(id).addEventListener('input', function (e) { state[id] = e.target.value; render(); });
+  });
+
+  var addBtn = $('addSearch');
+  var searchInput = $('searchQuery');
+  var searchType = $('searchType');
+  function addSearchItem() {
+    var keyword = (searchInput.value || '').trim();
+    if (!keyword) {
+      say('Enter a keyword first.', 'warn');
+      return;
+    }
+    addBtn.disabled = true;
+    say('Adding to the database…');
+    fetch('/api/search/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keyword: keyword, itemType: searchType.value })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.ok) {
+          say('Added — reloading the dashboard…', 'ok');
+          setTimeout(function () { location.reload(); }, 600);
+        } else {
+          say(j.error || 'Could not add the item.', 'err');
+          addBtn.disabled = false;
+        }
+      })
+      .catch(function () {
+        say('Could not reach the local helper. Run python3 serve.py first.', 'err');
+        addBtn.disabled = false;
+      });
+  }
+  addBtn.addEventListener('click', addSearchItem);
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); addSearchItem(); }
   });
   $('reset').addEventListener('click', function () {
     state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
@@ -201,7 +250,7 @@
   });
 
   function match(i) {
-    if (state.date && i.date !== state.date) return false;
+    if (state.publishedDate && i.published !== state.publishedDate) return false;
     if (state.section && i.section !== state.section) return false;
     if (state.source && i.source !== state.source) return false;
     if (state.pa.length && state.pa.indexOf(i.practiceArea) < 0) return false;
@@ -232,7 +281,7 @@
     $('count').textContent = shown.length + ' of ' + D.items.length + ' items';
 
     var notes = [];
-    (state.date ? [state.date] : D.dates).forEach(function (d) {
+    (state.publishedDate ? [state.publishedDate] : D.dates).forEach(function (d) {
       (D.notes[d] || []).forEach(function (n) { notes.push(d + ' — ' + n); });
     });
     $('notes').innerHTML = notes.length

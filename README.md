@@ -3,6 +3,8 @@
 A daily-refreshed static dashboard of news relevant to actuarial science and data science:
 new methodology, industry trends, emerging risks, and open problems worth solving.
 
+The dashboard keeps a historical baseline spanning the last three years and also refreshes for newly published items each run.
+
 **Live dashboard:** https://sean-shepherd.github.io/actuarial-ds-news-dashboard/
 
 ## How it works
@@ -14,7 +16,7 @@ Each run:
 
 1. Fetches the sources listed in [`actuarial-ds-news-dashboard-instructions.md`](actuarial-ds-news-dashboard-instructions.md)
    (RSS/API where available, scraping only as fallback).
-2. Filters to items published in the last 24–48 hours, deduped against `data/seen.json`.
+2. Filters to items published in the last 24–48 hours, deduped against `data/seen.json`, while preserving a historical baseline spanning the last three years.
 3. Opens each article or paper and extracts the actual substance — methodology, data, results,
    what changed vs. prior practice.
 4. Tags each item with a practice area and, for Actuarial items, a business line.

@@ -22,6 +22,25 @@ data/seen.json          # dedupe ledger: normalized URL -> first-seen date
 `data/` snapshots are append-only history. Never delete or rewrite a past snapshot. Rewriting today's
 snapshot is fine if you re-run on the same day.
 
+## History and the three-year baseline
+
+The spec requires a historical baseline spanning the last three years. **This is a retention guarantee,
+not a per-run backfill obligation.** Concretely, what you must do each run:
+
+- **Add** items newly discovered in the current window (Actuarial 7 days, Data Science 24–48 hours).
+- **Preserve** every existing snapshot in `data/`. `build.py` merges all of them into the page, so the
+  baseline deepens by one day per run and history survives every refresh automatically.
+- **Never** delete, prune, truncate, or rewrite a snapshot dated earlier than today, and never reset
+  `data/seen.json`. Only snapshots older than three years may ever be pruned, and you do not do that —
+  a human decides it explicitly.
+
+**Do not attempt to backfill three years of history during a run.** It is not achievable and trying will
+blow the time budget and produce garbage. RSS feeds carry only their most recent 10–30 items, so three
+years of history simply is not reachable through them. A real backfill would mean date-ranged arXiv API
+queries plus paginated archive scraping across a dozen trade sites — thousands of items, hours of work,
+and a separate deliberate project. If a run finds the baseline shallow, that is because the dashboard is
+young, not because something failed. Say so in `run_notes` and move on.
+
 ## Time budget — 10 minutes wall clock
 
 A run must finish in about 10 minutes. Spend the time on depth, not breadth, and buy speed by

@@ -83,6 +83,7 @@ def load_snapshots():
                 if item_type not in ITEM_TYPES:
                     warnings.append("%s: unknown item_type %r" % (path.name, item_type))
 
+                sort_order = raw.get("sort_order", 0)
                 items.append(
                     {
                         "date": date,
@@ -96,11 +97,12 @@ def load_snapshots():
                         "practiceArea": pa,
                         "businessLine": bl or None,
                         "itemType": item_type,
+                        "sortOrder": sort_order,
                     }
                 )
 
     dates = sorted(notes.keys(), reverse=True)
-    items.sort(key=lambda i: (i["date"], i["section"], i["source"]), reverse=True)
+    items.sort(key=lambda i: (i["published"], i["date"], -i["sortOrder"], i["section"], i["source"]), reverse=True)
     return items, dates, notes, warnings
 
 
@@ -223,8 +225,19 @@ TEMPLATE = r"""<!doctype html>
   <div class="panel">
     <div class="row">
       <span class="lbl">Search</span>
-      <input type="search" id="q" placeholder="Headline, summary, or source…">
-      <select id="date"></select>
+      <input type="search" id="searchQuery" placeholder="Add a keyword to the database…">
+      <select id="searchType">
+        <option value="News">News</option>
+        <option value="Article">Article</option>
+        <option value="Research">Research</option>
+        <option value="Publication">Publication</option>
+      </select>
+      <button class="chip" id="addSearch" type="button">Add to database</button>
+    </div>
+    <div class="row">
+      <span class="lbl">Filter</span>
+      <input type="search" id="q" placeholder="Filter current items…">
+      <select id="publishedDate"></select>
       <select id="section">
         <option value="">Both sections</option>
         <option value="actuarial">Actuarial</option>
@@ -253,7 +266,7 @@ TEMPLATE = r"""<!doctype html>
 (function () {
   var D = JSON.parse(document.getElementById('payload').textContent);
   var PA = /*__PA__*/, BL = /*__BL__*/, IT = /*__IT__*/;
-  var state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
+  var state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '' };
 
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) {
@@ -267,9 +280,11 @@ TEMPLATE = r"""<!doctype html>
       (D.dates.length === 1 ? '' : 's') + ' — latest ' + D.dates[0]
     : 'No snapshots yet. Run ./refresh.sh to populate data.';
 
-  var dateSel = $('date');
-  dateSel.innerHTML = '<option value="">All dates</option>' +
-    D.dates.map(function (d) { return '<option value="' + d + '">' + d + '</option>'; }).join('');
+  var publishedDateSel = $('publishedDate');
+  var publishedDates = D.items.map(function (i) { return i.published; })
+    .filter(function (d, n, a) { return a.indexOf(d) === n; }).sort().reverse();
+  publishedDateSel.innerHTML = '<option value="">All published dates</option>' +
+    publishedDates.map(function (d) { return '<option value="' + esc(d) + '">' + esc(d) + '</option>'; }).join('');
 
   var sources = D.items.map(function (i) { return i.source; })
     .filter(function (s, n, a) { return a.indexOf(s) === n; }).sort();
@@ -294,8 +309,44 @@ TEMPLATE = r"""<!doctype html>
   chips($('bl'), BL, 'bl');
   chips($('it'), IT, 'itemType');
 
-  ['q', 'date', 'section', 'source'].forEach(function (id) {
+  ['q', 'publishedDate', 'section', 'source'].forEach(function (id) {
     $(id).addEventListener('input', function (e) { state[id] = e.target.value; render(); });
+  });
+
+  var addBtn = $('addSearch');
+  var searchInput = $('searchQuery');
+  var searchType = $('searchType');
+  function addSearchItem() {
+    var keyword = (searchInput.value || '').trim();
+    if (!keyword) {
+      say('Enter a keyword first.', 'warn');
+      return;
+    }
+    addBtn.disabled = true;
+    say('Adding to the database…');
+    fetch('/api/search/add', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ keyword: keyword, itemType: searchType.value })
+    })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.ok) {
+          say('Added — reloading the dashboard…', 'ok');
+          setTimeout(function () { location.reload(); }, 600);
+        } else {
+          say(j.error || 'Could not add the item.', 'err');
+          addBtn.disabled = false;
+        }
+      })
+      .catch(function () {
+        say('Could not reach the local helper. Run python3 serve.py first.', 'err');
+        addBtn.disabled = false;
+      });
+  }
+  addBtn.addEventListener('click', addSearchItem);
+  searchInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); addSearchItem(); }
   });
   $('reset').addEventListener('click', function () {
     state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
@@ -307,7 +358,7 @@ TEMPLATE = r"""<!doctype html>
   });
 
   function match(i) {
-    if (state.date && i.date !== state.date) return false;
+    if (state.publishedDate && i.published !== state.publishedDate) return false;
     if (state.section && i.section !== state.section) return false;
     if (state.source && i.source !== state.source) return false;
     if (state.pa.length && state.pa.indexOf(i.practiceArea) < 0) return false;
@@ -338,7 +389,7 @@ TEMPLATE = r"""<!doctype html>
     $('count').textContent = shown.length + ' of ' + D.items.length + ' items';
 
     var notes = [];
-    (state.date ? [state.date] : D.dates).forEach(function (d) {
+    (state.publishedDate ? [state.publishedDate] : D.dates).forEach(function (d) {
       (D.notes[d] || []).forEach(function (n) { notes.push(d + ' — ' + n); });
     });
     $('notes').innerHTML = notes.length
