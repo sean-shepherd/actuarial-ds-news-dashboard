@@ -31,8 +31,9 @@ BUSINESS_LINES = [
     "Consulting",
     "Other",
 ]
+ITEM_TYPES = ["Publication", "Research", "Article", "News"]
 
-REQUIRED = ["headline", "url", "source", "published", "summary", "practice_area"]
+REQUIRED = ["headline", "url", "source", "published", "summary", "practice_area", "item_type"]
 
 # Where the hosted page's Refresh button sends you, since a static public page can't
 # trigger a cloud run itself without embedding a credential.
@@ -71,6 +72,7 @@ def load_snapshots():
                 if pa not in PRACTICE_AREAS:
                     warnings.append("%s: unknown practice_area %r" % (path.name, pa))
                 bl = raw.get("business_line")
+                item_type = raw.get("item_type") or "News"
                 if bl and bl not in BUSINESS_LINES:
                     warnings.append("%s: unknown business_line %r" % (path.name, bl))
                 if key == "actuarial" and not bl:
@@ -78,6 +80,8 @@ def load_snapshots():
                         "%s: actuarial item '%s' has no business_line"
                         % (path.name, str(raw["headline"])[:60])
                     )
+                if item_type not in ITEM_TYPES:
+                    warnings.append("%s: unknown item_type %r" % (path.name, item_type))
 
                 items.append(
                     {
@@ -91,6 +95,7 @@ def load_snapshots():
                         "summary": raw["summary"],
                         "practiceArea": pa,
                         "businessLine": bl or None,
+                        "itemType": item_type,
                     }
                 )
 
@@ -228,6 +233,7 @@ TEMPLATE = r"""<!doctype html>
     </div>
     <div class="row"><span class="lbl">Practice</span><span id="pa" class="row"></span></div>
     <div class="row"><span class="lbl">Business line</span><span id="bl" class="row"></span></div>
+    <div class="row"><span class="lbl">Type</span><span id="it" class="row"></span></div>
     <div class="row">
       <span class="lbl">Source</span>
       <select id="source"></select>
@@ -246,8 +252,8 @@ TEMPLATE = r"""<!doctype html>
 <script>
 (function () {
   var D = JSON.parse(document.getElementById('payload').textContent);
-  var PA = /*__PA__*/, BL = /*__BL__*/;
-  var state = { q: '', date: '', section: '', pa: [], bl: [], source: '' };
+  var PA = /*__PA__*/, BL = /*__BL__*/, IT = /*__IT__*/;
+  var state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
 
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) {
@@ -286,12 +292,13 @@ TEMPLATE = r"""<!doctype html>
   }
   chips($('pa'), PA, 'pa');
   chips($('bl'), BL, 'bl');
+  chips($('it'), IT, 'itemType');
 
   ['q', 'date', 'section', 'source'].forEach(function (id) {
     $(id).addEventListener('input', function (e) { state[id] = e.target.value; render(); });
   });
   $('reset').addEventListener('click', function () {
-    state = { q: '', date: '', section: '', pa: [], bl: [], source: '' };
+    state = { q: '', date: '', section: '', pa: [], bl: [], itemType: [], source: '' };
     ['q', 'date', 'section', 'source'].forEach(function (id) { $(id).value = ''; });
     Array.prototype.forEach.call(document.querySelectorAll('.chip[aria-pressed]'), function (b) {
       b.setAttribute('aria-pressed', 'false');
@@ -305,6 +312,7 @@ TEMPLATE = r"""<!doctype html>
     if (state.source && i.source !== state.source) return false;
     if (state.pa.length && state.pa.indexOf(i.practiceArea) < 0) return false;
     if (state.bl.length && (!i.businessLine || state.bl.indexOf(i.businessLine) < 0)) return false;
+    if (state.itemType.length && state.itemType.indexOf(i.itemType) < 0) return false;
     if (state.q) {
       var hay = (i.headline + ' ' + i.summary + ' ' + i.source).toLowerCase();
       if (hay.indexOf(state.q.toLowerCase()) < 0) return false;
@@ -314,7 +322,8 @@ TEMPLATE = r"""<!doctype html>
 
   function card(i) {
     var tags = '<span class="tag pa">' + esc(i.practiceArea) + '</span>' +
-      (i.businessLine ? '<span class="tag">' + esc(i.businessLine) + '</span>' : '');
+      (i.businessLine ? '<span class="tag">' + esc(i.businessLine) + '</span>' : '') +
+      '<span class="tag">' + esc(i.itemType) + '</span>';
     return '<article>' +
       '<h3><a href="' + esc(i.url) + '" target="_blank" rel="noopener">' + esc(i.headline) + '</a></h3>' +
       '<div class="meta"><b>' + esc(i.source) + '</b> · published ' + esc(i.published) +
@@ -439,6 +448,7 @@ def main():
         TEMPLATE.replace("/*__DATA__*/", blob)
         .replace("/*__PA__*/", json.dumps(PRACTICE_AREAS))
         .replace("/*__BL__*/", json.dumps(BUSINESS_LINES))
+        .replace("/*__IT__*/", json.dumps(ITEM_TYPES))
         .replace("/*__ROUTINE_URL__*/", json.dumps(ROUTINE_URL))
     )
     OUT.write_text(html, encoding="utf-8")

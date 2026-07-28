@@ -1,117 +1,115 @@
 {
   "date": "2026-07-28",
-  "generated_at": "2026-07-28T16:03:01Z",
+  "generated_at": "2026-07-28T16:33:25Z",
   "window": "2026-07-26..2026-07-28",
   "sections": {
     "actuarial": [
       {
-        "headline": "2025 Variance Prize honors research comparing credibility theory and machine learning for ratemaking",
-        "url": "https://www.casact.org/article/2025-variance-prize-honors-research-credibility-theory-and-machine-learning",
-        "source": "CAS",
-        "published": "2026-07-27",
-        "summary": "The CAS awarded its 2025 Variance Prize ($5,000) to \"Adjusting Manual Rates to Own Experience: Comparing the Credibility Approach to Machine Learning\" by Christophe Dutang, Giorgio Alfredo Spedicato, and Quentin Guibert. The paper contrasts classical credibility theory against modern machine learning and transfer-learning methods for the core P&C ratemaking problem of adjusting manual (class) rates to an individual risk's own experience -- the same experience-rating problem underlying workers' comp and commercial GL/auto pricing. The authors show the two approaches are complementary rather than substitutes, with ML able to supplement but not replace credibility-based judgment in practice. The Editor-in-Chief specifically framed the result as showing how classical and modern techniques \"can work together to improve ratemaking,\" giving pricing actuaries a concrete basis for blending the two in commercial lines rate filings.",
-        "practice_area": "Pricing",
-        "business_line": "Commercial Insurance"
-      },
-      {
-        "headline": "CAS releases second edition of its AI Primer, adding agentic AI guidance and an AI-driven reserving workflow",
+        "headline": "Second Edition of the CAS AI Primer Now Available",
         "url": "https://www.casact.org/article/second-edition-cas-ai-primer-now-available",
         "source": "CAS",
         "published": "2026-07-27",
-        "summary": "The Casualty Actuarial Society published the second edition of \"The CAS AI Primer: Practical Guidance for Actuaries\" on July 27, 2026, maintained by the CAS Artificial Intelligence Working Group on a quarterly review cycle. New in this edition: a section on agentic AI covering its operational mechanics, workflow integration, adoption frameworks and risks; updated descriptions of current AI models' actuarial capabilities; and a visual walkthrough of an AI-driven claims reserving process. The primer's throughline is responsible use -- validation, governance, and retained professional judgment -- rather than wholesale automation. It targets P&C actuaries at all AI-experience levels rather than one specific line, so treat this as cross-cutting governance guidance rather than a line-specific development.",
+        "summary": "CAS released an updated primer on AI use in actuarial practice, expanding guidance as AI adoption accelerates — a reference point for P&C actuaries navigating AI/ML in pricing, reserving, and underwriting.",
         "practice_area": "AI/ML/Deep Learning",
-        "business_line": "Other"
+        "business_line": "Commercial Insurance",
+        "item_type": "Publication"
       },
       {
-        "headline": "M6.8 earthquake strikes Kumamoto, Japan, damaging commercial and industrial property",
-        "url": "https://www.artemis.bm/news/japan-struck-by-m6-8-earthquake-in-kumamoto-prefecture-damage-reported-limited-so-far/",
-        "source": "Artemis",
-        "published": "2026-07-28",
-        "summary": "A magnitude 6.8 earthquake (initially reported as 7.1, revised by USGS) struck south of Kumamoto city at roughly 10km depth on July 28, 2026, registering Shindo 7 -- the top of the Japanese intensity scale -- in the worst-hit areas. Reported damage includes a collapsed section of an Aeon shopping mall with people trapped, damage to the Nippon Paper Industries Yatsushiro plant with workers reported missing, expressway and industrial-structure damage, and roughly 48,000 households without power. For context, the 2016 Kumamoto quake (M7.0) generated up to $4 billion in insurance/reinsurance losses, and there is currently $1.55 billion of outstanding cat bond limit exposed to Japanese quake risk, though most of that capacity is indemnity- or parametric-triggered against residential rather than commercial exposure, meaning the corporate and industrial losses reported here will likely fall more heavily on traditional commercial property and reinsurance treaties than on the cat bond market.",
-        "practice_area": "ERM",
-        "business_line": "Commercial Insurance"
+        "headline": "2025 Variance Prize Honors Research on Credibility Theory and Machine Learning",
+        "url": "https://www.casact.org/article/2025-variance-prize-honors-research-credibility-theory-and-machine-learning",
+        "source": "CAS",
+        "published": "2026-07-27",
+        "summary": "CAS's Variance journal prize went to a paper on adjusting manual rates to own experience, blending classical credibility theory with machine learning — directly relevant to commercial-lines ratemaking.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
       },
       {
-        "headline": "Munich Re Specialty launches parametric earthquake cover for corporates in Japan via Lloyd's",
+        "headline": "Munich Re Specialty launches parametric earthquake insurance for corporates in Japan",
         "url": "https://www.artemis.bm/news/munich-re-specialty-launches-parametric-earthquake-insurance-corporates-in-japan/",
         "source": "Artemis",
         "published": "2026-07-28",
-        "summary": "Munich Re Specialty launched a parametric earthquake insurance product for corporate clients in Japan, distributed through the Lloyd's Japan platform and structurally supported by Munich Re's Capital Partners division. The trigger uses seismic-intensity readings from Japan's Kik-net and K-NET monitoring station networks rather than a physical damage assessment, so payouts can be released quickly to fund business continuity and operational recovery after a quake. It is aimed broadly at Japanese businesses seeking protection beyond traditional indemnity-based property cover, closing a protection gap for corporates that need fast liquidity rather than a lengthy claims-adjustment process. No policy limits, pricing, or initial take-up figures were disclosed at launch (July 28, 2026).",
-        "practice_area": "ERM",
-        "business_line": "Commercial Insurance"
+        "summary": "New parametric earthquake cover for Japanese corporate clients via the Lloyd's Japan platform, offering rapid post-quake liquidity — a commercial property product launch amid this week's Kumamoto earthquake.",
+        "practice_area": "Other",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
       }
     ],
     "data_science": [
       {
-        "headline": "Bloomberg open-sources Causal-TS, a unified library for causal discovery in high-dimensional, nonstationary time series",
-        "url": "http://arxiv.org/abs/2607.24673v1",
+        "headline": "Low-Rank Dependence Decomposition via Accelerated Symmetric Non-negative Matrix Factorization",
+        "url": "https://arxiv.org/abs/2607.24518",
         "source": "arXiv cs.LG",
         "published": "2026-07-27",
-        "summary": "Bloomberg researcher Mohammad Fesanghary released Causal-TS, an open-source Python library (pip-installable, Python 3.10-3.12) implementing four specialized causal-discovery algorithms -- CDNOTS, CDNOTS+, CEDAR, and GRACE -- plus wrappers for established methods (GES, Granger, LASSO-VAR, LGES), all sharing one GPU-accelerated conditional-independence test layer via PyTorch. A regime-discovery pipeline detects structural breaks with pluggable changepoint detectors and reruns discovery with regime-specific parameters, and optional DoWhy integration takes the pipeline from raw multivariate series to causal effect estimates. This directly targets the practical problem of causal structure that shifts over time -- relevant to any actuarial time series work (claims trends, mortality, macro drivers) where the causal structure isn't assumed stationary. Code is available at github.com/bloomberg/causal-ts.",
+        "summary": "GPU-scalable symmetric NMF for extracting tail-dependence structure from large correlation matrices via extreme value theory — applicable to portfolio and catastrophe risk-factor estimation at scale.",
         "practice_area": "Predictive Modeling",
-        "business_line": null
+        "business_line": null,
+        "item_type": "Research"
       },
       {
-        "headline": "New regret-optimal algorithm for non-stationary dynamic pricing closes a long-standing theoretical gap",
-        "url": "http://arxiv.org/abs/2607.24115v1",
+        "headline": "Debiased Machine Learning: Identification, Estimation, and Shape Constraints",
+        "url": "https://arxiv.org/abs/2607.24472",
         "source": "arXiv stat.ML",
         "published": "2026-07-27",
-        "summary": "Jiang and Zhao study contextual dynamic pricing where demand follows a generalized linear model (GLM) whose true parameters can change over time in an unknown way, and propose a multiscale change-point-detection algorithm that adapts without needing to know the number of stationary segments or the magnitude of parameter drift in advance. The method achieves regret of order O(sqrt(s_T*d*T) AND {V_T^(1/3)*d^(1/3)*T^(2/3) + sqrt(d*T)}), where s_T counts piecewise-stationary segments and V_T is a newly defined design-adjusted variation budget -- and the authors prove a matching minimax lower bound, confirming optimality up to log factors. They note existing adaptive non-stationary bandit methods don't transfer to this setting because contexts vary across arrivals, so this closes a genuine gap rather than incrementally tuning an existing method. For actuarial pricing teams running GLM-based rating engines with periodic re-calibration, this gives a principled, adaptive alternative to fixed-window refits when the underlying demand or loss relationship drifts.",
-        "practice_area": "Pricing",
-        "business_line": null
+        "summary": "Extends automatic debiased ML to shape-constrained settings with endogeneity, correcting regularization bias when nuisance functions are ML-estimated — useful for causal estimation in pricing and reserving work.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
       },
       {
-        "headline": "Systematic study finds distributional (non-mean) splitting mostly doesn't beat CART for random forests -- except on multivariate responses",
-        "url": "http://arxiv.org/abs/2607.23721v1",
+        "headline": "On Non-Stationary Dynamic Pricing: Adaptivity and Optimality",
+        "url": "https://arxiv.org/abs/2607.24115",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-27",
+        "summary": "Adaptive contextual pricing algorithm with change-point detection achieves best-of-both-worlds regret under unknown non-stationarity — directly relevant to actuarial rate adaptation and usage-based pricing schemes.",
+        "practice_area": "Pricing",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Learning Switched Non-Linear Dynamical Systems from a Single Trajectory",
+        "url": "https://arxiv.org/abs/2607.23502",
         "source": "arXiv stat.ML",
         "published": "2026-07-26",
-        "summary": "Koemen implements four distributional random-forest split criteria (isotropic and anisotropic random-Fourier-feature MMD, adaptive-frequency MMD, and a sliced-Wasserstein criterion, plus post-hoc kernel-mean shrinkage) inside one honest-forest codebase and benchmarks them against standard mean-based CART splitting across synthetic quantile mechanisms, real univariate datasets, a California-housing curve, and multivariate synthetic/real responses. The finding actuaries should note: on ordinary scalar tabular regression, plain CART remains the robust default and frequently wins outright, and the fancier distributional-splitting variants don't systematically beat isotropic MMD. Distributional splitting only earns its keep on multivariate responses with genuine non-location (dependence) structure -- e.g., a copula example where the energy score separates methods even though marginal CRPS does not. All criteria and the paired-comparison harness ship in the open-source, Rust-backed `drforest` library. This is a useful corrective for reserving/pricing teams tempted to adopt more exotic tree-splitting criteria for tabular claims data: the added complexity mostly isn't justified unless the target is genuinely multivariate.",
+        "summary": "Non-asymptotic bounds for learning regime-switching dynamics from one observed trajectory — relevant to modeling regime shifts in claims frequency, mortality trends, or economic scenario generation.",
         "practice_area": "Predictive Modeling",
-        "business_line": null
+        "business_line": null,
+        "item_type": "Research"
       },
       {
-        "headline": "Meta's proxymate framework diagnoses and corrects bias in proxy-outcome inference -- a direct analogue to loss-development risk in reserving",
-        "url": "http://arxiv.org/abs/2607.24401v1",
-        "source": "arXiv stat.ML",
-        "published": "2026-07-27",
-        "summary": "Darmon, Sinha, Wilkins-Reeves and Gocmen present proxymate, an open-source framework for validating and correcting inference that relies on proxy outcomes -- short-term signals, model predictions, or surrogate endpoints used in place of a primary outcome that is too slow to mature, too rare, or too hard to measure directly. The framework checks four distinct failure levels -- population representativity, unit-level measurement quality, estimate-level decision validity, and cross-domain transportability -- each paired with targeted adjustment strategies rather than a single blanket correction. At Meta, the tool has been applied across experimentation, prevalence estimation, and monitoring use cases and has \"assessed and corrected millions of proxy/primary comparisons,\" enabling faster decisions on thousands of experiments where naive proxy-based confidence intervals would have been miscalibrated. The structural problem -- inference from an immature signal standing in for a slow-to-mature true outcome -- is exactly the loss-development problem in reserving (early paid/incurred data as a proxy for ultimate losses), making the diagnostic taxonomy a useful lens even though the paper itself has no insurance application.",
-        "practice_area": "Reserving",
-        "business_line": null
-      },
-      {
-        "headline": "Generative crowdsourcing model jointly models item difficulty and class-dependent annotator skill to recover rare labels",
-        "url": "http://arxiv.org/abs/2607.24622v1",
+        "headline": "Causal-TS: A Python Library for Causal Discovery in High-Dimensional and Nonstationary Time Series",
+        "url": "https://arxiv.org/abs/2607.24673",
         "source": "arXiv cs.LG",
         "published": "2026-07-27",
-        "summary": "Singer, Gruffaz, Vo Van and Vayatis address class-imbalanced crowdsourced labeling, where annotators can be uniformly reliable, uniformly unreliable, or specialists on just the majority or minority class -- and where the minority label is usually the operationally important one (e.g., a rare defect or fraud flag). Prior label-aggregation models capture either class-dependent annotator error or item difficulty, but not both together; this paper introduces a generative model combining both, revisits Condorcet's Jury Theorem under class imbalance, and proves majority voting asymptotically preserves the true class proportion. Evaluated across 33 real-world crowdsourcing datasets (images and text, spanning both many-annotations-per-item and many-items regimes), the model consistently achieves the best minority-class recall while staying competitive on balanced accuracy. This is directly transferable to insurance rare-event labeling problems -- claims-fraud flagging, SIU referral triage, underwriting red-flag review -- where multiple reviewers disagree and the rare positive class is what actually matters.",
+        "summary": "Open-source library for causal discovery with regime detection in multivariate nonstationary time series — a practical tool for investigating causal drivers behind shifting loss trends.",
         "practice_area": "Predictive Modeling",
-        "business_line": null
+        "business_line": null,
+        "item_type": "Research"
       },
       {
-        "headline": "Consolidated best-practices guide for building large-scale ML-derived maps from Earth observation data",
-        "url": "http://arxiv.org/abs/2607.24532v1",
-        "source": "arXiv cs.LG",
-        "published": "2026-07-27",
-        "summary": "Sialelli, Young, Jiang, Aybar and co-authors present a condensed, end-to-end best-practices guide for turning satellite Earth-observation data into operational, large-scale ML-derived maps, organized around six coupled stages: EO data infrastructure, data selection/preprocessing, ML dataset construction and training, uncertainty quantification, map production/distribution, and independent validation. The paper's central warning is that design choices made early (preprocessing, dataset construction) quietly propagate errors into the final map, and that uncertainty quantification and independent validation are the two stages most often under-resourced relative to their importance. While framed generically, this is directly applicable to catastrophe and climate-risk modeling teams that increasingly build exposure and peril maps (flood, wildfire, wind) from ML on satellite imagery, where the same validation and error-propagation risks apply to the resulting commercial-property risk scores. A longer companion guide with full methodological depth is linked from the paper.",
-        "practice_area": "Predictive Modeling",
-        "business_line": null
+        "headline": "Don't Just \"Throw Adam at It\": Misunderstanding Adam Will Cost You",
+        "url": "https://towardsdatascience.com/dont-just-throw-adam-at-it-misunderstanding-adam-will-cost-you/",
+        "source": "Towards Data Science",
+        "published": "2026-07-28",
+        "summary": "Explainer on how misunderstanding the Adam optimizer's dynamics leads to poorly tuned neural nets — practical reading for teams building deep learning models on tabular actuarial data.",
+        "practice_area": "AI/ML/Deep Learning",
+        "business_line": null,
+        "item_type": "Article"
       }
     ]
   },
   "run_notes": [
-    "SOA: both https://www.soa.org/sectionsfeed/ and fallback https://www.soa.org/news-and-publications/ returned HTTP 404 -- FAILED, no SOA content obtained (not retried further per time budget). No commercial P&C output could be assessed as a result.",
-    "CAS: no RSS discovered (casact.org/rss.xml and casact.org/news/rss.xml both 404) -- fell back to scraping https://www.casact.org/news index per spec. 13 items in window (Jun 25-Jul 27); 11 dropped as exam schedules/volunteer awards/webinar subscriptions/conference items or, in one case (NAIC homeowners rate regulation white paper), explicitly personal lines. 2 kept: Variance Prize research and CAS AI Primer 2nd edition.",
-    "IFoA: primary https://www.actuaries.org.uk/news-and-insights returned 404; its own listed fallback also 404'd, and a discovered redirect target (actuaries.org.uk/news-insights) resolved to a defunct/archived placeholder page with no content -- FAILED entirely, no usable RSS or content found, not retried further per time budget.",
-    "The Actuary Magazine: feed (theactuarymagazine.org/feed/) worked and returned 10 items, but all were published before the 48h window (latest Jul 16) and none would have passed the commercial P&C filter regardless (SOA brand refresh, AI-risk essay, student case-study winners, personal reflections) -- 0 kept.",
-    "InsuranceERM: blocked by a Cloudflare JavaScript challenge (HTTP 403) on both WebFetch and a browser-UA curl request -- effectively paywalled/inaccessible, could not retrieve any headlines or content, 0 items, not retried further per time budget.",
-    "Artemis: feed (artemis.bm/feed/) worked, 10 items in window. 8 dropped: 5 pure ILS/cat-bond capital-markets mechanics (secondary trading volumes, transaction-process commentary, cat bond issuance/spreads, tokenised-ILS regulatory guidance, UCITS cat bond fund AUM), 1 life/pension product (WTW longevity swap), 1 sovereign (not business-insured) disaster risk transfer (ADB-Mongolia), and 1 macro/GDP exposure item (First Street severe-convective-storm GDP exposure) dropped as ambiguous scope given time budget rather than fetched in full. 2 kept: the Kumamoto earthquake event (commercial/industrial damage) and Munich Re Specialty's parametric earthquake product for corporates.",
-    "Actuarial section total: 4 items against a 5-8 target -- expected shortfall under the commercial P&C filter (per spec), not a fetch failure; SOA and IFoA contributed 0 usable items and InsuranceERM was fully inaccessible.",
-    "arXiv cs.LG: primary API URL (export.arxiv.org/api/query, cat:cs.LG) worked directly, 60 entries returned, all dated 2026-07-27.",
-    "arXiv stat.ML: same API worked directly, 60 entries, dated 2026-07-23 through 2026-07-27; only entries from 2026-07-26 onward were in-window.",
-    "Hugging Face trending papers (huggingface.co/papers) worked and returned ~28 items, but all were LLM/vision/agent/robotics benchmark work (frontier LLM releases, video generation, virtual try-on, driving datasets) with no insurance, actuarial, or foundational tabular/statistical relevance under the 3b filter -- 0 kept.",
-    "Papers With Code (fallback, not needed since Hugging Face succeeded): confirmed defunct as an independent site -- paperswithcode.com now 302-redirects to huggingface.co/papers/trending.",
-    "Towards Data Science: feed worked, 9 items in window, all dropped under 3b as general LLM-engineering tutorials/blog posts (MCP, RAG loop engineering, prompting Claude Code, browser agents) with no transferable research methodology or insurance relevance -- 0 kept. Note: a genuinely relevant piece on tabular foundation models beating GBMs was found on the same feed but published Jul 24, outside the 48h window.",
-    "Google AI research blog (research.google/blog/rss/) worked but returned stale content relative to the window -- latest post dated Jul 22, before the Jul 26-28 window -- correctly 0 kept as 'nothing published in window' rather than a fetch failure.",
-    "Data Science section: 6 items kept from 120 arXiv candidates screened (60 cs.LG + 60 stat.ML) plus 0 from HF/TDS/Google AI."
+    "Window used: 2026-07-26..2026-07-28 (48h), per explicit instruction for this run.",
+    "SOA: checked homepage, /resources/newsroom/, and /research/topics/general-ins-landing/ (the old /news-and-publications/ URL 404'd). Most recent P&C-adjacent item was the March 2026 Emerging Risks Survey (CAS/SOA joint) — outside the window. General-insurance research listing showed only 2023-2025 dated publications. 0 kept — expected result per §3a, SOA is the life/health body.",
+    "IFoA: homepage nav surfaced 3 recent headlines (retirement-outcomes roadmap, Mansion House briefing, Finlaison Medal award), all dated 13-16 July — outside the 48h window, and none is commercial-P&C-specific. The guessed /news-and-media-releases/ list URL 404'd; not retried further (one-retry rule). 0 kept.",
+    "InsuranceERM: both /news and the bare homepage returned HTTP 403 (Cloudflare/access block) on two separate attempts. Per revised spec this is treated as an access issue, not a fetch failure, and was not retried a third time. 0 items — headline evidence unavailable.",
+    "The Actuary Magazine: feed returned 10 items dated 9 June - 16 July, all outside the 48h window and all life/retirement/organizational content (SOA leadership, AI-in-study-habits, Japan reflections, brand refresh). 0 kept.",
+    "CAS: 7 items surfaced in/near window; kept 2 (AI Primer 2nd edition; Variance Prize on credibility theory + ML). Dropped: NAIC homeowners rate-regulation white paper (personal lines, out of scope), webinar-subscription/exam-registration/volunteer-award/career-changer items (no line-of-business content).",
+    "Artemis: 10 feed items, all dated 27-28 July (in window). Kept 1 (Munich Re Specialty parametric earthquake cover for Japanese corporates). Dropped 9: 6 were cat-bond/ILS capital-markets mechanics (secondary trading, issuance momentum, UCITS fund AUM, tokenised ILS, transaction-process commentary), 1 was a UK pension longevity swap (life/pensions, out of scope), 1 (First Street GDP/SCS exposure report) was insufficiently commercial-specific to keep, 1 (Kumamoto earthquake damage report) lacked clear commercial-insurance framing.",
+    "Actuarial section total: 3 items vs the 5-8 target. Expected under the §3a commercial P&C filter combined with the strict 48h window — not padded.",
+    "arXiv cs.LG / stat.ML: export API worked via WebFetch; two follow-up stat.ML queries hit HTTP 429 (rate limited) and were not retried further. Relied on the initial successful fetches (60-100 results each), filtered to 26-28 July. Several strong-looking candidates (conformal-prediction forecasting, causal forests, tabular generative models) were dated 24-25 July and excluded as outside the window.",
+    "Hugging Face Papers: today's trending list is dominated by frontier-LLM, robotics-survey, and computer-use-agent papers; nothing tabular/time-series/insurance-relevant. 0 kept.",
+    "Google Research blog: 5 most recent posts (7-22 July) are outside the 48h window and off-topic (health symptom AI, quantum error correction, diffusion-model creativity, wearable health, traffic congestion). 0 kept.",
+    "Towards Data Science: the on-topic 'Tabular LLMs' piece was dated 24 July, outside the 48h window, and was excluded; kept only the 28 July Adam-optimizer piece."
   ]
 }

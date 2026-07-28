@@ -38,8 +38,10 @@ narrowing the candidate pool rather than by skimming.
 - **At the 8-minute mark, stop collecting** and write up what you have. A snapshot with 4 solid items
   is a successful run; an unfinished run that wrote no snapshot is a failed one.
 
-Never buy speed by weakening the summaries. A 3–5 sentence summary built from the actual article is the
-product. If you are short on time, cut the number of items, not the depth of each.
+Never buy speed by weakening the summaries. Keep the summaries short and headline-driven: a single
+concise sentence or two is enough, and the point is to indicate why the headline is relevant to actuarial
+or data science work rather than to read the underlying material in depth. If you are short on time, cut
+the number of items, not the depth of each.
 
 ## Run procedure
 
@@ -53,33 +55,37 @@ product. If you are short on time, cut the number of items, not the depth of eac
 
 ### 2. Fetch sources
 
-Try the feed URL first; fall back to the HTML index page only if the feed 404s, returns nothing, or
-returns stale content. Record every source that fails in `run_notes` — a silent skip reads as "nothing
-was published there," which is a different claim.
+Try the feed URL first; fall back to the homepage or a discovery page only if the feed 404s, returns
+nothing, or returns stale content. For organizations that publish research or publications instead of a
+conventional news feed, start from the main homepage and dig into the site navigation to find the
+relevant news, research, articles, or publications section. Examples include SOA research landing pages,
+CAS research/publications pages, and similar institutional hubs. Record every source that fails in
+`run_notes` — a silent skip reads as "nothing was published there," which is a different claim.
 
 **Actuarial**
 
 | Source | Try first | Fallback |
 |---|---|---|
-| SOA | `https://www.soa.org/sectionsfeed/` or site RSS if discoverable | `https://www.soa.org/news-and-publications/` |
-| CAS | site RSS if discoverable | `https://www.casact.org/news` |
-| IFoA | site RSS if discoverable | `https://www.actuaries.org.uk/news-and-insights` |
-| The Actuary Magazine | `https://www.theactuarymagazine.org/feed/` | `https://www.theactuarymagazine.org/` |
-| InsuranceERM | site RSS if discoverable | `https://www.insuranceerm.com/` |
-| Artemis | `https://www.artemis.bm/feed/` | `https://www.artemis.bm/news/` |
+| SOA | site RSS if discoverable | start at `https://www.soa.org/` and look for news/research/articles/publications; use `https://www.soa.org/research/topics/general-ins-landing/` or `https://www.soa.org/news-and-publications/` if needed |
+| CAS | site RSS if discoverable | start at `https://www.casact.org/` and look for research/publications/news; use `https://www.casact.org/research`, `https://www.casact.org/publications-research/publications`, or `https://www.casact.org/news` if needed |
+| IFoA | site RSS if discoverable | start at `https://www.actuaries.org.uk/` and look for news/insights/research/publications; use `https://www.actuaries.org.uk/news-and-insights` if needed |
+| The Actuary Magazine | `https://www.theactuarymagazine.org/feed/` | start at `https://www.theactuarymagazine.org/` and look for news/articles/features if the feed is unavailable |
+| InsuranceERM | site RSS if discoverable | start at `https://www.insuranceerm.com/` and look for news/articles/research or archive pages if needed |
+| Artemis | `https://www.artemis.bm/feed/` | start at `https://www.artemis.bm/` and look for news/articles/market commentary if the feed is unavailable |
 
 **Data Science / ML**
 
 | Source | Try first | Fallback |
 |---|---|---|
-| arXiv cs.LG | `http://export.arxiv.org/api/query?search_query=cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=60` | `https://rss.arxiv.org/rss/cs.LG` |
-| arXiv stat.ML | same API with `cat:stat.ML` | `https://rss.arxiv.org/rss/stat.ML` |
-| Trending papers | `https://huggingface.co/papers` | `https://paperswithcode.com/` (may be defunct — note it if so) |
-| Towards Data Science | `https://towardsdatascience.com/feed/` | `https://towardsdatascience.com/` |
-| Google AI | `https://research.google/blog/rss/` | `https://blog.google/technology/ai/` |
+| arXiv cs.LG | `http://export.arxiv.org/api/query?search_query=cat:cs.LG&sortBy=submittedDate&sortOrder=descending&max_results=60` | start at `https://arxiv.org/` and browse recent listings, or use `https://rss.arxiv.org/rss/cs.LG` |
+| arXiv stat.ML | same API with `cat:stat.ML` | start at `https://arxiv.org/` and browse recent listings, or use `https://rss.arxiv.org/rss/stat.ML` |
+| Trending papers | `https://huggingface.co/papers` | start at `https://huggingface.co/` or `https://paperswithcode.com/` and look for trending papers/benchmarks if needed (may be defunct — note it if so) |
+| Towards Data Science | `https://towardsdatascience.com/feed/` | start at `https://towardsdatascience.com/` and browse latest posts if the feed is unavailable |
+| Google AI | `https://research.google/blog/rss/` | start at `https://blog.google/technology/ai/` or `https://research.google/blog/` and look for posts/research updates if needed |
 
-If a paywall blocks the body (InsuranceERM often does), do not summarize from the headline. Either find a
-free equivalent covering the same story, or drop the item and note the paywall.
+If a paywall or access barrier blocks the material (InsuranceERM often does), do not try to read through it.
+Treat the headline as the evidence and simply note the access issue in `run_notes` if you cannot verify a
+relevant topic. The workflow is headline-first and lightweight.
 
 ### 3a. Scope filter — Actuarial section is commercial P&C only
 
@@ -145,30 +151,30 @@ scientist would act on:
 - **Drop** — vision/robotics/NLP benchmark increments, LLM leaderboard chasing, anything whose only
   contribution is +0.4 on a benchmark with no transferable method.
 
-### 4. Read each candidate properly
+### 4. Screen by headline only
 
-For every item you intend to publish, `WebFetch` the article or paper itself — abstract-only is not
-enough for a paper, and headline-only is never enough for an article. Extract:
+For every item you intend to publish, check the headline and, if available, the source page summary or
+brief description. Do not open and read the full article or paper unless you are already strongly confident
+it is relevant. The goal is to decide whether the item looks like:
 
-- What methodology, model, or change is actually proposed.
-- What data and results support it (datasets, sample sizes, effect sizes, benchmark deltas, jurisdictions,
-  effective dates — the concrete numbers).
-- What changed versus prior practice.
-- Why it matters to actuarial or insurance work.
+- actuarial or data science content,
+- commercial insurance relevance where applicable,
+- and a fit for the dashboard as a link to more information.
 
-Then write a **3–5 sentence summary that carries those specifics**. No teasers, no "the article discusses",
-no restating the headline. If after reading you cannot say anything specific, the item is not worth
-publishing — drop it.
+Then write a **short summary** — ideally one concise sentence or two — that explains why the headline
+appears relevant. No deep reading is required, and no detailed methodology extraction is needed. If the
+headline is too vague or clearly off-topic, drop it.
 
-### 5. Tag
+### 5. Tag and classify
 
-Assign tags by reading the extracted content, not by keyword matching on the title.
+Assign tags by headline-level relevance, not by deep reading of the material.
 
 - **Practice area** (every item, both sections): `Pricing` | `Reserving` | `Predictive Modeling` |
   `AI/ML/Deep Learning` | `ERM` | `Capital Modelling` | `Other`
 - **Business line** (Actuarial items required; Data Science items only when the work names an insurance
   application, otherwise `null`): `Personal Insurance` | `Commercial Insurance` | `Reinsurance` |
   `Consulting` | `Other`
+- **Item type**: `Publication` | `Research` | `Article` | `News`
 
 Pick the single best fit. Use `Other` honestly rather than forcing a stretch.
 
@@ -189,7 +195,7 @@ Target 5–8 items per section. Fewer is correct on a slow day — never pad wit
 the window. If a section comes up short, note why in `run_notes`. For the Actuarial section, coming up
 short is the normal case under the §3a commercial P&C filter, not a problem to solve by loosening it.
 
-Write `data/YYYY-MM-DD.json`:
+Write `data/YYYY-MM-DD.json` with an `item_type` field on each item:
 
 ```json
 {
@@ -203,9 +209,10 @@ Write `data/YYYY-MM-DD.json`:
         "url": "https://…",
         "source": "Artemis",
         "published": "2026-07-26",
-        "summary": "3–5 substantive sentences.",
+        "summary": "1–2 concise sentences.",
         "practice_area": "Capital Modelling",
-        "business_line": "Reinsurance"
+        "business_line": "Reinsurance",
+        "item_type": "Article"
       }
     ],
     "data_science": [
@@ -214,9 +221,10 @@ Write `data/YYYY-MM-DD.json`:
         "url": "https://…",
         "source": "arXiv stat.ML",
         "published": "2026-07-26",
-        "summary": "3–5 substantive sentences.",
+        "summary": "1–2 concise sentences.",
         "practice_area": "Predictive Modeling",
-        "business_line": null
+        "business_line": null,
+        "item_type": "Research"
       }
     ]
   },
