@@ -1,6 +1,6 @@
 {
   "date": "2026-07-28",
-  "generated_at": "2026-07-28T17:55:00Z",
+  "generated_at": "2026-07-28T20:20:00Z",
   "window": "actuarial 2026-07-21..2026-07-28 (7 days); data_science 2026-07-26..2026-07-28 (~48h)",
   "sections": {
     "actuarial": [
@@ -193,6 +193,66 @@
         "practice_area": "Pricing",
         "business_line": "Commercial Insurance",
         "item_type": "Article"
+      },
+      {
+        "headline": "Comp medical inflation drops to 1% in June: NCCI",
+        "url": "https://www.businessinsurance.com/comp-medical-inflation-drops-to-1-in-june-ncci/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "NCCI reported that workers' compensation medical cost inflation eased to just 1% in June, a sharp slowdown that the rating bureau cautions may be temporary. Medical severity trend is a core input to workers' comp loss-cost and reserve assumptions, so a softening reading affects near-term rate filings. Actuaries pricing and reserving comp business should watch whether the dip persists or reverses in coming months.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Calif. high court eases path for suits against excess insurers",
+        "url": "https://www.businessinsurance.com/calif-high-court-eases-path-for-suits-against-excess-insurers/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "California's Supreme Court ruled that policyholders no longer must show their underlying primary insurance was fully exhausted before suing excess insurers for bad faith. The decision lowers the bar for commercial policyholders and their excess carriers in coverage disputes, likely increasing bad-faith litigation exposure across excess liability towers. Reserving and claims actuaries for commercial excess and umbrella lines should factor this precedent into loss-development and litigation-cost assumptions.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Appeals court revives school district's hail damage claim against Hanover unit",
+        "url": "https://www.businessinsurance.com/appeals-court-revives-school-districts-hail-damage-claim-against-hanover-unit/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "A federal appeals court revived a school district's denied hail-damage claim against a Hanover Insurance Group subsidiary, sending the commercial property coverage dispute back for further litigation. The ruling is a reminder that catastrophe-driven property claims, like hail, remain a recurring source of coverage litigation on commercial and public-entity policies. It is a relevant data point for property claims and reserving actuaries tracking coverage-dispute frequency on convective-storm losses.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "El Niño forecast drives Brazil crop insurance demand",
+        "url": "https://www.businessinsurance.com/el-nino-forecast-drives-brazil-crop-insurance-demand/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "Forecasts of an unusually strong El Niño are pushing Brazilian farmers to buy more crop insurance, prompting insurer Mapfre to become more selective in regions facing extreme weather. The shift illustrates how a commercial specialty insurer actively re-underwrites agricultural exposure in response to a forecasted climate signal rather than waiting for losses to emerge. It is a useful pricing and underwriting-selectivity data point for actuaries working in agricultural or weather-sensitive specialty lines.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Google ordered to defend Starbuck's AI defamation suit",
+        "url": "https://www.claimsjournal.com/news/national/2026/07/27/339086.htm",
+        "source": "Claims Journal",
+        "published": "2026-07-27",
+        "summary": "A Delaware court rejected Google's bid to dismiss a defamation suit brought by activist Robby Starbuck over false statements its AI chatbot generated about him. The ruling lets a novel algorithmic-liability claim proceed to discovery, a concrete test case for how courts will treat harms caused by generative-AI output. It adds to the emerging case law commercial insurers must track when pricing AI and technology-liability exposure on GL and E&O policies.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Cincinnati's net income jumps 83% to $1.26bn in Q2'26",
+        "url": "https://www.reinsurancene.ws/cincinnatis-net-income-jumps-83-to-1-26bn-in-q226/",
+        "source": "Reinsurance News",
+        "published": "2026-07-28",
+        "summary": "Cincinnati Financial, a major U.S. commercial P&C insurer, reported Q2 net income up 83% to $1.26 billion, though its combined ratio worsened to 100.8% on higher catastrophe losses. Earned premium grew 6% to $2.64 billion, showing continued commercial-lines growth even as underwriting profitability came under pressure from cat activity. The combined-ratio deterioration is a useful benchmark for reserving actuaries assessing how elevated catastrophe losses are flowing through commercial carriers' 2026 results.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
       }
     ],
     "data_science": [
@@ -372,6 +432,18 @@
     "Towards Data Science: two new items appeared since the earlier run today (a local-LLM cost-measurement piece and an MCP-explainer article, both 2026-07-28) but neither was judged to meet the §3b bar -- both are general AI-engineering explainers with no actuarial/tabular/uncertainty-quantification substance. 0 new kept.",
     "Google AI research blog: most recent post remains 2026-07-22 (SymptomAI), outside the 24-48h window -- 0 new items, consistent with the earlier run today.",
     "Hugging Face trending papers: today's list is vision/robotics/diffusion/LLM-agent heavy (Kimi K3, video-generation attention sparsification, embodied manipulation, computer-use agents) with nothing tabular, insurance-relevant, or otherwise passing §3b -- 0 kept, consistent with the earlier run today.",
-    "Resulting totals after this run: actuarial 19 items (11 prior + 8 new), data science 15 items (9 prior + 6 new), 34 total. New-item count for this run specifically: 14 (8 actuarial, 6 data science)."
+    "Resulting totals after this run: actuarial 19 items (11 prior + 8 new), data science 15 items (9 prior + 6 new), 34 total. New-item count for this run specifically: 14 (8 actuarial, 6 data science).",
+    "THIRD RUN (this run, ~20:10-20:20 UTC): merged additional new items into the existing 34-item snapshot (19 actuarial, 15 data science) found by re-fetching all six trade feeds, Artemis, arXiv cs.LG/stat.ML, Towards Data Science, Google Research blog, and Hugging Face trending papers roughly two hours after the prior run. The 34 existing items were left completely untouched -- only newly-screened, non-duplicate items were appended, and data/seen.json was appended to (not reset).",
+    "Business Insurance: WebFetch not attempted (known 403); curl with browser User-Agent returned HTTP 200 with 20 items, parsed via Python/regex. Fallback confirmed working a third time. Of 20 raw items, 3 were already in seen.json (Brown & Brown property pricing, Willis data-center coverage, J&J talc deal); 12 were out of scope (appointments/M&A announcements -- Berkley reinsurance leadership, Swiss Re ANZ CEO, Gallagher Hewitt promotion; broad non-P&C market stats -- Hong Kong/Croatia premium growth, Brown & Brown broker Q2 profit, Japan non-life insurer profits judged too line-ambiguous; non-insurance wire news -- Novo Nordisk shareholder suit, coffee trademark suit, EY hacker threat, Greek radar failure); 4 new items kept (NCCI comp medical inflation, Calif. excess-insurer bad-faith ruling, Hanover hail-damage claim revival, Brazil crop insurance/El Nino).",
+    "Risk & Insurance: 10 raw items, all either already in seen.json (construction CPPL bundling, AI/GL exclusions, cyber stable-outlook, Vermont WC subrogation) or out of scope (a podcast episode and an on-demand webinar -- promotional/no new data; three executive appointments; the McKinsey AI-growth-stalemate piece, dropped again as too broad/non-P&C-specific, consistent with the prior run's treatment of the same story via Reinsurance News). 0 new kept.",
+    "Insurance Journal: 30 raw items screened; the great majority was non-insurance wire news (Meta/OpenAI data-center investment, Chobani, eBay, Google EU fine, Tesla/NHTSA, EPA, Trump diversity-policy, wildfire aid) or already-published/already-excluded topics (Edison LA fire and SC liquor captive both already in seen.json; Mapfre-Safety Insurance acquisition re-confirmed out of scope as personal auto/home). One candidate -- Zurich CEO/FINMA partial sales ban -- was considered but dropped: the brief description does not specify which line of business the sales ban affects, and Zurich is a composite (life+P&C) insurer, so it was judged too ambiguous to tag as commercial P&C with confidence rather than stretched to fit. 0 new kept.",
+    "Carrier Management: 10 raw items; the jobsite-theft report was already in seen.json, and the remainder was personal-lines (home severity trend, Ford Bronco recall, Root telematics, Waymo IIHS study), non-insurance (Tesla Cybertruck sales, diversity crackdown), or state traffic-safety law (Hawaii truck-bed age, staged-accident bill) with no commercial P&C substance. The quieter-hurricane-season piece was again left out as an ambiguous personal/commercial property split, consistent with the prior run's reasoning. 0 new kept.",
+    "Claims Journal: 15 raw items; most duplicated Insurance Journal's non-insurance wire stories or were already in seen.json (Edison fire, Amazon-driver verdict, J&J talc, small-business-underinsured survey). One new item kept -- a Delaware court ordering Google to defend an AI-chatbot defamation suit brought by activist Robby Starbuck -- kept under the explicit 3a 'AI and algorithmic liability' emerging-exposure category, since it is a concrete case testing commercial liability exposure from generative-AI output. A sponsored AI-medical-record-summarization piece was dropped as vendor-native advertising with no independent substance.",
+    "Reinsurance News: 10 raw items; the Cowbell item was already in seen.json, the McKinsey AI-competitive-dynamics piece was dropped as an exact-topic duplicate of the Risk & Insurance item (both ultimately the same McKinsey report, and both judged too broad/non-P&C-specific), and most of the rest were appointments or a UK DB pension longevity swap (life/pensions, out of scope). One new item kept -- Cincinnati Financial's Q2 results, where the combined ratio deteriorated to 100.8% on elevated catastrophe losses despite an 83% net-income jump -- a genuine commercial P&C reserving/loss-experience signal from a major U.S. commercial-lines carrier.",
+    "Artemis: re-fetched; all 10 items in the feed were unchanged from the prior run's review (secondary cat-bond trading, UCITS AUM, tokenised ILS, transaction-process commentary, and cat-bond-market-resilience commentary are capital-markets/ILS mechanics excluded under 3a; the WTW longevity swap is life/pensions; the Munich Re Japan parametric-earthquake item and the Kumamoto earthquake item were both already assessed -- the former is in seen.json, the latter lacks commercial-insurance framing; the Mongolia sovereign disaster-risk-transfer item and the First Street GDP-exposure report were both re-confirmed as insufficiently commercial-specific, consistent with the prior run). 0 new kept.",
+    "CAS, SOA, IFoA, The Actuary Magazine: not re-fetched this run. These institutional/publication sources were exhaustively screened against the same 7-day window twice already today (the prior two runs), do not publish on an hours-scale cadence, and re-fetching was judged low-value against the time budget. Noting the skip explicitly per instructions rather than silently omitting it.",
+    "InsuranceERM: skipped per standing guidance -- confirmed Cloudflare block, not retried.",
+    "Data Science: re-fetched arXiv cs.LG (40 results) and arXiv stat.ML (40 results) via the export API, Towards Data Science, Google Research blog, and Hugging Face trending papers. Zero new qualifying items found. arXiv cs.LG/stat.ML: the two new-since-last-check candidates worth a look (Learning Distributions from Multiple Data Providers; PYPM-GGD Bayesian nonparametric mixture) were both judged too abstract/theoretical with no stated actuarial or insurance transfer, so passed over; every other paper in-window duplicated what the prior run already screened and either kept or explicitly rejected. Towards Data Science: two new posts appeared (local-LLM wattage-cost measurement; an MCP explainer) but both are the same two general AI-engineering pieces the prior run already reviewed and rejected for lacking actuarial/tabular substance. Google Research blog: still no post since 2026-07-22 (SymptomAI), outside the 24-48h window. Hugging Face trending: today's list remains vision/robotics/LLM-agent/diffusion heavy (Kimi K3, JarvisHub, agentic-search distillation, diffusion-distillation guidance, robotic-learning survey, computer-use agents, embodied manipulation) with nothing tabular, insurance-relevant, or otherwise passing 3b.",
+    "Resulting totals after this run: actuarial 25 items (19 prior + 6 new), data science 15 items (15 prior + 0 new), 40 total. New-item count for this run specifically: 6, all actuarial. Zero new data-science items is a legitimate outcome given two prior exhaustive passes today, not a sign anything failed."
   ]
 }
