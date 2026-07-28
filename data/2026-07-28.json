@@ -1,6 +1,6 @@
 {
   "date": "2026-07-28",
-  "generated_at": "2026-07-28T17:04:19Z",
+  "generated_at": "2026-07-28T17:55:00Z",
   "window": "actuarial 2026-07-21..2026-07-28 (7 days); data_science 2026-07-26..2026-07-28 (~48h)",
   "sections": {
     "actuarial": [
@@ -113,6 +113,86 @@
         "practice_area": "Other",
         "business_line": "Commercial Insurance",
         "item_type": "News"
+      },
+      {
+        "headline": "J&J reaches sweeping talc deal that could end decade of litigation",
+        "url": "https://www.businessinsurance.com/jj-reaches-sweeping-talc-deal-that-could-end-decade-of-litigation/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "Johnson & Johnson agreed to pay an estimated $5.5 billion to resolve tens of thousands of talc-related ovarian cancer lawsuits, one of the largest mass-tort settlements in years. The deal caps a decade of litigation and will shape how commercial liability insurers reserve for latent bodily-injury claims tied to legacy products. It adds another data point to the mass-tort and nuclear-verdict trend actuaries are tracking for long-tail liability reserving.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Global property rates down 12% Q2: Marsh Risk",
+        "url": "https://www.businessinsurance.com/global-property-rates-down-12-q2-marsh-risk/",
+        "source": "Business Insurance",
+        "published": "2026-07-27",
+        "summary": "Marsh's Q2 2026 index shows global commercial property insurance rates fell 12% year over year, accelerating from a 9% decline in Q1, with India, the Middle East and Asia seeing the steepest drops. The data confirms a broadening soft market in commercial property that actuaries and underwriters must factor into pricing and rate-adequacy models. It corroborates Brown & Brown's own reported property rate softening, reinforcing the trend across independent sources.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Unclear risks drive excess data center coverage: Willis",
+        "url": "https://www.businessinsurance.com/unclear-risks-drive-excess-data-center-coverage-willis/",
+        "source": "Business Insurance",
+        "published": "2026-07-28",
+        "summary": "Willis Towers Watson reports that data center owners are often buying more excess liability and property coverage than their actual exposure warrants because the underlying risks remain poorly understood or quantified. As AI-driven data center construction accelerates, insurers and actuaries face a genuinely new commercial property exposure with limited loss history to price against. The report highlights a gap between coverage-buying behavior and actuarial risk quantification for this emerging asset class.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "Liberty Mutual must cover pedestrian struck by Lyft driver: N.J. court",
+        "url": "https://www.businessinsurance.com/new-jersey-court-says-liberty-mutual-must-cover-pedestrian-struck-by-lyft-driver/",
+        "source": "Business Insurance",
+        "published": "2026-07-27",
+        "summary": "A New Jersey appeals court ruled Liberty Mutual must provide no-fault medical coverage to a pedestrian struck by a Lyft driver, rejecting the insurer's argument that ride-hailing statutes shield it from that obligation. The ruling clarifies a recurring coverage-gap dispute between personal auto insurers and transportation network companies in commercial/TNC auto claims. It is a data point for actuaries reserving and pricing rideshare-related commercial auto liability exposure.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "How Combined Environmental and Professional Liability Coverage is Reshaping Construction Insurance",
+        "url": "https://riskandinsurance.com/how-combined-environmental-and-professional-liability-coverage-is-reshaping-construction-insurance/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-28",
+        "summary": "As construction contracts grow more complex, contractors are increasingly bundling environmental and professional liability coverage into a single policy to meet contractual insurance requirements more efficiently. The trend reflects how commercial specialty underwriters are restructuring coverage forms around the construction sector's overlapping pollution and design-liability exposures. It is relevant to product design and pricing work in commercial construction and E&S liability lines.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "Global Cyber Insurance Market Holds Stable Outlook Despite Softening Rates",
+        "url": "https://riskandinsurance.com/global-cyber-insurance-market-holds-stable-outlook-despite-softening-rates/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-27",
+        "summary": "AM Best maintained a stable outlook for the global cyber insurance segment, citing strong demand and continued profitability even as premium growth slows and competition drives rates down. The assessment gives actuaries a rating-agency benchmark for cyber loss experience and capital adequacy as the line matures past its early hard-market phase. It is a useful pricing and ERM signal for a commercial specialty line still short on long-run loss data.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Vermont Supreme Court Upholds Minimal Pain and Suffering Award, Bars Workers' Comp Details From Jury",
+        "url": "https://riskandinsurance.com/vermont-supreme-court-upholds-minimal-pain-and-suffering-award-bars-workers-comp-details-from-jury/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-27",
+        "summary": "Vermont's Supreme Court held that informing jurors about a workers' compensation subrogation interest would improperly prejudice deliberations, upholding a minimal pain-and-suffering award. The ruling affects how workers' comp carriers pursue third-party subrogation recoveries in states with similar evidentiary rules, a factor in reserving for comp claims tied to related liability suits. It is a narrow but concrete data point for commercial workers' compensation claims and reserving practice.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Majority of Small Business Are Underinsured as Other Expenses Prioritized",
+        "url": "https://www.claimsjournal.com/news/national/2026/07/27/339047.htm",
+        "source": "Claims Journal",
+        "published": "2026-07-27",
+        "summary": "A new ERGO NEXT survey found that most small businesses remain underinsured, with newer business owners more likely than established ones to carry adequate commercial coverage. The finding points to a persistent protection gap in the small commercial segment that affects loss ratios, take-up rates, and product design for commercial P&C insurers. It is a relevant data point for actuaries modeling small-commercial pricing, retention, and market-expansion opportunity.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
       }
     ],
     "data_science": [
@@ -205,6 +285,66 @@
         "practice_area": "AI/ML/Deep Learning",
         "business_line": null,
         "item_type": "Article"
+      },
+      {
+        "headline": "K-Survival Means",
+        "url": "https://arxiv.org/abs/2607.24405",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-27",
+        "summary": "K-SurvMeans extends K-Means clustering to explicitly incorporate survival outcomes when forming cluster centers, rather than clustering on covariates alone and ignoring time-to-event structure. This is directly applicable to actuarial mortality, lapse, and morbidity segmentation, where survival-aware clustering could improve risk-class construction. The method offers a concrete alternative to standard unsupervised segmentation for time-to-event insurance data.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "proxymate: Diagnosis and Adjustment of Proxy Estimates for Reliable Inference",
+        "url": "https://arxiv.org/abs/2607.24401",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-27",
+        "summary": "Proxymate addresses the common actuarial problem of using proxy or surrogate outcomes, such as early claims signals or model predictions, in place of slower-maturing true outcomes like ultimate loss. The paper provides diagnostic and adjustment tools for when such proxies bias downstream estimation and inference. This is relevant to reserving and pricing work that leans on early indicators before claims fully develop.",
+        "practice_area": "Reserving",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Bayesian Feature Extraction using Gaussian and Diffused-gamma Priors for High Dimensional Spatio-Temporal Data",
+        "url": "https://arxiv.org/abs/2607.24378",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-27",
+        "summary": "The paper develops a Bayesian feature-extraction framework for high-dimensional data with sparse structure and spatio-temporal dependence, using Gaussian and diffused-gamma priors. Such methods are directly applicable to catastrophe and climate risk modeling, where losses vary across both geography and time with sparse, correlated structure. It offers actuaries a potential tool for extracting interpretable risk factors from large spatio-temporal exposure datasets.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Beyond Aggregate Risk: Role-Stratified Conformal Risk Control for LLM Tool Calls",
+        "url": "https://arxiv.org/abs/2607.24343",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-27",
+        "summary": "This paper extends conformal risk control, a distribution-free uncertainty quantification method, to stratify risk guarantees by the role or type of action being taken rather than a single aggregate bound. The underlying technique is transferable to actuarial uncertainty quantification, where different claim types or risk classes may need separately calibrated error guarantees. It represents a methodological advance in conformal prediction with reach beyond its LLM-agent use case.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Frequency-Based Reservoir Computing",
+        "url": "https://arxiv.org/abs/2607.24420",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-27",
+        "summary": "The paper proposes a frequency-domain approach to reservoir computing, an efficient recurrent architecture for forecasting time series generated by dynamical systems. Reservoir computing's low training cost makes it an attractive alternative to deep recurrent networks for forecasting tasks such as claims frequency, mortality trends, or economic scenario paths. This frequency-based variant could improve efficiency and accuracy for actuarial time-series forecasting applications.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Beyond Scale and Generation: Understanding Language Model-based Entity Matching",
+        "url": "https://arxiv.org/abs/2607.24688",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-27",
+        "summary": "The paper studies how language models perform entity matching, the task of identifying records that refer to the same real-world entity, across architectures such as bi-encoders and generative matchers. Entity matching is a common data-engineering problem in insurance, needed to link policyholder, claims, and third-party records across legacy systems. The comparison of which architecture works best is useful guidance for building or improving insurance data-integration pipelines.",
+        "practice_area": "AI/ML/Deep Learning",
+        "business_line": null,
+        "item_type": "Research"
       }
     ]
   },
@@ -222,6 +362,16 @@
     "InsuranceERM: skipped per standing guidance -- confirmed Cloudflare block, not retried.",
     "Actuarial total: 8 items, at the top of the 5-8 target, drawn from all six trade feeds plus zero from Artemis/CAS/SOA/IFoA/Actuary Magazine this cycle (all either already captured today or excluded under §3a) -- a genuine result of the filter and same-day dedup, not a shortfall.",
     "Data Science: the day's strongest arXiv output (5 papers) and one Towards Data Science piece were already captured by the earlier run today and are correctly excluded via seen.json -- this run's 3 items are what's left in the 24-48h window after that exclusion, not the full day's yield. arXiv cs.LG produced no additional in-scope items (mostly PDE solvers, KV-cache efficiency work, and a 2.8T-parameter LLM release, none insurance/actuarial-relevant). Google AI research blog: no posts since 2026-07-22, outside the 24-48h window -- 0 items. Hugging Face trending papers: today's trending list was vision/robotics/LLM-agent heavy with no tabular, insurance, or uncertainty-quantification papers -- 0 items.",
-    "Merged 9 items recovered from the earlier run today (git 6ad01e0): the re-run overwrote this snapshot while seen.json retained their URLs, which would have orphaned them off the dashboard."
+    "Merged 9 items recovered from the earlier run today (git 6ad01e0): the re-run overwrote this snapshot while seen.json retained their URLs, which would have orphaned them off the dashboard.",
+    "SECOND RE-RUN (this run, ~17:45-18:00 UTC): merged 14 new items into the existing 20-item snapshot (8 actuarial, 6 data science) per updated instructions -- 3-sentence summaries on new items only; the 20 existing items were left untouched at their original 1-2 sentence style, producing an intentional style seam. data/seen.json was not reset; all 14 new URLs/arXiv IDs were added to it, none overlapped prior keys.",
+    "Business Insurance: WebFetch was not attempted this run (known 403); went straight to Bash curl with a browser User-Agent per instruction -- HTTP 200, 20 items, parsed via a small Python/regex script. Fallback confirmed working a second time.",
+    "Re-screened full raw item lists (not just what the earlier run today published) from the six trade feeds against data/seen.json: Business Insurance 20 raw -> 4 new kept (J&J talc settlement, Marsh Q2 global property rates -12%, Willis data-center excess-coverage report, Liberty Mutual/Lyft NJ coverage ruling). Risk & Insurance 10 raw -> 3 new kept (construction environmental+professional liability bundling, AM Best cyber insurance stable-outlook report, Vermont WC subrogation ruling). Insurance Journal 30 raw -> 0 new kept (remaining unscreened items were people-moves, unrelated wire news e.g. Chobani/Meta/OpenAI/EPA/NHTSA, or already-dropped patterns like the Mapfre-Safety personal-lines acquisition and broad national-market premium stats). Carrier Management 10 raw -> 0 new kept (jobsite-theft item already published; remainder was personal auto/home items -- Ford Bronco recall, Root telematics, Waymo IIHS study, home severity trend report -- plus a staged-accident-fraud bill and non-insurance news; the 'quieter hurricane season' cat-risk piece was left out as a likely duplicate of Claims Journal's identical wire story and its business-line split between personal/commercial property was too ambiguous to tag cleanly). Claims Journal 15 raw -> 1 new kept (ERGO NEXT small-business-underinsured survey); rest were already-published items, personal-auto/theft-research, or general non-insurance wire news. Reinsurance News 10 raw -> 0 new kept (Cowbell item already published; remainder was a pensions longevity swap, appointments, the already-dropped Mapfre-Safety and McKinsey broad-AI items, and low-substance earnings/org-launch items).",
+    "This run intentionally screened more broadly than 'genuinely few new items' guidance anticipated: the raw per-feed volumes from the earlier run today's own notes (e.g. BI 20 raw / 9 passed screen / only 2 published; R&I 10 raw / 5 passed / only 1 published) show several in-scope, non-duplicate items were left unpublished purely for the earlier run's own selectivity/diversity trimming, not because they failed the §3a filter. Treating data/seen.json as the sole source of dedup truth (per the agent definition), this run added those still-qualifying items rather than re-discarding them, which produced 8 new actuarial + 6 new data-science items rather than the expected 2-4. Flagging this explicitly since it departs from the stated expectation -- every added item traces to a fetched feed/description and passed the same §3a/§3b screen, but the volume is a judgment call worth a human sanity-check.",
+    "Did not re-fetch CAS, Artemis, SOA, IFoA, or The Actuary Magazine this run: the earlier run today already exhaustively screened all five against the same 7-day window (CAS 5 raw/0 new kept beyond what it published; Artemis 10 raw/0 kept; SOA 0; IFoA 0 -- items outside window; Actuary Magazine 0 -- items outside window), and institutional/ILS sources do not refresh meaningfully within a few hours on the same day. Re-fetching was judged low-value against the time budget; noting the skip explicitly rather than silently omitting it.",
+    "Data Science: re-pulled arXiv cs.LG and stat.ML via the export API (https, 50 results each, sorted by submission date) and cross-checked all 07-26/07-27-dated entries against seen.json. Kept 6 new items passing §3b that the earlier run today's narrower pull had not surfaced: K-Survival Means (survival-aware clustering, cs.LG), proxymate (proxy/surrogate-outcome bias diagnostics, stat.ML), Bayesian spatio-temporal feature extraction (stat.ML, catastrophe/climate-risk relevant), role-stratified conformal risk control (cs.LG, extends conformal prediction methodology), frequency-based reservoir computing (stat.ML, time-series forecasting), and LLM-based entity matching (cs.LG, insurance record-linkage relevance). Passed over as insufficiently transferable or out of window: several theoretical statistics/ML-theory papers (kernel discrepancy bounds, online PCA phase transitions, LoRA spectral theory), domain-specific papers (PINN nitrous-oxide flux, tennis-match TDA, EEG/retinal-vessel medical imaging), and several genuinely strong candidates (mixed continuous-categorical tabular generative models, gate-localized conformal forecasting, causal-forest heterogeneity correction) dated 2026-07-24/25, which fell outside the ~48h data-science window relative to this run's timestamp.",
+    "Towards Data Science: two new items appeared since the earlier run today (a local-LLM cost-measurement piece and an MCP-explainer article, both 2026-07-28) but neither was judged to meet the §3b bar -- both are general AI-engineering explainers with no actuarial/tabular/uncertainty-quantification substance. 0 new kept.",
+    "Google AI research blog: most recent post remains 2026-07-22 (SymptomAI), outside the 24-48h window -- 0 new items, consistent with the earlier run today.",
+    "Hugging Face trending papers: today's list is vision/robotics/diffusion/LLM-agent heavy (Kimi K3, video-generation attention sparsification, embodied manipulation, computer-use agents) with nothing tabular, insurance-relevant, or otherwise passing §3b -- 0 kept, consistent with the earlier run today.",
+    "Resulting totals after this run: actuarial 19 items (11 prior + 8 new), data science 15 items (9 prior + 6 new), 34 total. New-item count for this run specifically: 14 (8 actuarial, 6 data science)."
   ]
 }

@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
+DB_PATH = DATA_DIR / "database.json"
 OUT = ROOT / "index.html"
 
 SECTIONS = [("actuarial", "Actuarial"), ("data_science", "Data Science")]
@@ -40,23 +41,106 @@ REQUIRED = ["headline", "url", "source", "published", "summary", "practice_area"
 ROUTINE_URL = "https://claude.ai/code/routines/trig_011WCaBkju3UMBApJV2QZ2W6"
 
 
+def normalize_item(raw, date, key, label):
+    pa = raw["practice_area"]
+    bl = raw.get("business_line")
+    item_type = raw.get("item_type") or "News"
+    sort_order = raw.get("sort_order", 0)
+    return {
+        "date": date,
+        "section": key,
+        "sectionLabel": label,
+        "headline": raw["headline"],
+        "url": raw["url"],
+        "source": raw["source"],
+        "published": raw["published"],
+        "summary": raw["summary"],
+        "practiceArea": pa,
+        "businessLine": bl or None,
+        "itemType": item_type,
+        "sortOrder": sort_order,
+        "firstSeen": date,
+        "lastSeen": date,
+        "seenIn": [date],
+    }
+
+
+def load_database_items(path=DB_PATH):
+    if not path.exists():
+        return []
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return []
+    if isinstance(payload, list):
+        return payload
+    if isinstance(payload, dict):
+        items = payload.get("items") or payload.get("database") or []
+        return items if isinstance(items, list) else []
+    return []
+
+
+def write_database_file(items, path=DB_PATH):
+    payload = sorted(items, key=lambda i: (i.get("published", ""), i.get("lastSeen", ""), i.get("section", ""), i.get("headline", "")), reverse=True)
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    return payload
+
+
+def merge_database_items(existing_items, new_items):
+    by_key = {}
+    merged = []
+    for item in existing_items:
+        key = item.get("url") or "%s|%s|%s" % (item.get("source", ""), item.get("headline", ""), item.get("published", ""))
+        by_key[key] = item
+        merged.append(item)
+
+    for item in new_items:
+        key = item.get("url") or "%s|%s|%s" % (item.get("source", ""), item.get("headline", ""), item.get("published", ""))
+        if key in by_key:
+            existing = by_key[key]
+            existing["lastSeen"] = item.get("lastSeen") or existing.get("lastSeen")
+            seen_in = list(existing.get("seenIn") or [])
+            for date in item.get("seenIn") or []:
+                if date not in seen_in:
+                    seen_in.append(date)
+            existing["seenIn"] = sorted(seen_in)
+            for field in ["date", "section", "sectionLabel", "headline", "url", "source", "published", "summary", "practiceArea", "businessLine", "itemType", "sortOrder"]:
+                if field in item and item[field] is not None:
+                    existing[field] = item[field]
+            if not existing.get("firstSeen"):
+                existing["firstSeen"] = item.get("firstSeen") or item.get("date")
+            continue
+        merged.append(item)
+        by_key[key] = item
+
+    merged.sort(key=lambda i: (i.get("published", ""), i.get("lastSeen", ""), i.get("section", ""), i.get("headline", "")), reverse=True)
+    return merged
+
+
 def load_snapshots():
-    """Return (items, dates_desc, notes_by_date, warnings)."""
+    """Return (items, dates_desc, notes_by_date, latest_items, warnings)."""
     items, notes, warnings = [], {}, []
+    latest_items = []
     if not DATA_DIR.is_dir():
-        return items, [], notes, ["data/ directory not found — nothing to render"]
+        return items, [], notes, latest_items, ["data/ directory not found — nothing to render"]
 
     for path in sorted(DATA_DIR.glob("*.json")):
-        if path.name == "seen.json":
+        # seen.json is the dedupe ledger and database.json is this script's own output;
+        # neither is a dated snapshot. Parsing database.json here crashes on its list shape.
+        if path.name in ("seen.json", DB_PATH.name):
             continue
         try:
             snap = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as exc:
             warnings.append("%s: invalid JSON (%s) — skipped" % (path.name, exc))
             continue
+        if not isinstance(snap, dict):
+            warnings.append("%s: not a snapshot object — skipped" % path.name)
+            continue
 
         date = snap.get("date") or path.stem
         notes[date] = snap.get("run_notes") or []
+        snapshot_items = []
 
         for key, label in SECTIONS:
             for raw in snap.get("sections", {}).get(key, []):
@@ -83,27 +167,18 @@ def load_snapshots():
                 if item_type not in ITEM_TYPES:
                     warnings.append("%s: unknown item_type %r" % (path.name, item_type))
 
-                sort_order = raw.get("sort_order", 0)
-                items.append(
-                    {
-                        "date": date,
-                        "section": key,
-                        "sectionLabel": label,
-                        "headline": raw["headline"],
-                        "url": raw["url"],
-                        "source": raw["source"],
-                        "published": raw["published"],
-                        "summary": raw["summary"],
-                        "practiceArea": pa,
-                        "businessLine": bl or None,
-                        "itemType": item_type,
-                        "sortOrder": sort_order,
-                    }
-                )
+                normalized = normalize_item(raw, date, key, label)
+                items.append(normalized)
+                snapshot_items.append(normalized)
+
+        if snapshot_items and (not latest_items or date >= max(notes.keys(), key=lambda d: d)):
+            latest_items = snapshot_items
 
     dates = sorted(notes.keys(), reverse=True)
     items.sort(key=lambda i: (i["published"], i["date"], -i["sortOrder"], i["section"], i["source"]), reverse=True)
-    return items, dates, notes, warnings
+    if latest_items:
+        latest_items.sort(key=lambda i: (i["published"], i["date"], -i["sortOrder"], i["section"], i["source"]), reverse=True)
+    return items, dates, notes, latest_items, warnings
 
 
 TEMPLATE = r"""<!doctype html>
@@ -252,6 +327,13 @@ TEMPLATE = r"""<!doctype html>
       <select id="source"></select>
       <button class="chip reset" id="reset" type="button">Reset filters</button>
     </div>
+    <div class="row">
+      <span class="lbl">View</span>
+      <select id="viewMode">
+        <option value="archive">Historical archive</option>
+        <option value="latest">Latest run</option>
+      </select>
+    </div>
   </div>
 
   <p class="count" id="count"></p>
@@ -265,7 +347,7 @@ TEMPLATE = r"""<!doctype html>
 (function () {
   var D = JSON.parse(document.getElementById('payload').textContent);
   var PA = /*__PA__*/, BL = /*__BL__*/, IT = /*__IT__*/;
-  var state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '' };
+  var state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '', view: 'archive' };
 
   var $ = function (id) { return document.getElementById(id); };
   function esc(s) {
@@ -280,7 +362,8 @@ TEMPLATE = r"""<!doctype html>
     : 'No snapshots yet. Run ./refresh.sh to populate data.';
 
   var publishedDateSel = $('publishedDate');
-  var quarters = D.items.map(function (i) { return i.published ? i.published.slice(0, 4) + ' Q' + Math.ceil(parseInt(i.published.slice(5, 7), 10) / 3) : null; })
+  var quarterItems = D.items || [];
+  var quarters = quarterItems.map(function (i) { return i.published ? i.published.slice(0, 4) + ' Q' + Math.ceil(parseInt(i.published.slice(5, 7), 10) / 3) : null; })
     .filter(function (q, n, a) { return q && a.indexOf(q) === n; }).sort().reverse();
   publishedDateSel.innerHTML = '<option value="">All published quarters</option>' +
     quarters.map(function (q) { return '<option value="' + esc(q) + '">' + esc(q) + '</option>'; }).join('');
@@ -310,6 +393,10 @@ TEMPLATE = r"""<!doctype html>
 
   ['q', 'publishedDate', 'section', 'source'].forEach(function (id) {
     $(id).addEventListener('input', function (e) { state[id] = e.target.value; render(); });
+  });
+  $('viewMode').addEventListener('change', function (e) {
+    state.view = e.target.value;
+    render();
   });
 
   var addBtn = $('addSearch');
@@ -348,8 +435,9 @@ TEMPLATE = r"""<!doctype html>
     if (e.key === 'Enter') { e.preventDefault(); addSearchItem(); }
   });
   $('reset').addEventListener('click', function () {
-    state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '' };
+    state = { q: '', publishedDate: '', section: '', pa: [], bl: [], itemType: [], source: '', view: 'archive' };
     ['q', 'publishedDate', 'section', 'source'].forEach(function (id) { $(id).value = ''; });
+    $('viewMode').value = 'archive';
     Array.prototype.forEach.call(document.querySelectorAll('.chip[aria-pressed]'), function (b) {
       b.setAttribute('aria-pressed', 'false');
     });
@@ -385,8 +473,9 @@ TEMPLATE = r"""<!doctype html>
   }
 
   function render() {
-    var shown = D.items.filter(match);
-    $('count').textContent = shown.length + ' of ' + D.items.length + ' items';
+    var sourceItems = state.view === 'latest' ? (D.latestItems || []) : (D.items || []);
+    var shown = sourceItems.filter(match);
+    $('count').textContent = shown.length + ' of ' + sourceItems.length + ' items';
 
     if (!shown.length) {
       $('list').innerHTML = '<p class="empty">Nothing matches these filters.</p>';
@@ -476,13 +565,17 @@ TEMPLATE = r"""<!doctype html>
 
 
 def main():
-    items, dates, notes, warnings = load_snapshots()
+    items, dates, notes, latest_items, warnings = load_snapshots()
+    database_items = load_database_items()
+    merged_items = merge_database_items(database_items, items)
+    write_database_file(merged_items)
 
     payload = {
         "generated": items and max(dates) or "never",
         "dates": dates,
         "notes": notes,
-        "items": items,
+        "items": merged_items,
+        "latestItems": latest_items,
     }
     blob = json.dumps(payload, ensure_ascii=False).replace("<", "\\u003c")
 
