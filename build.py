@@ -34,6 +34,10 @@ BUSINESS_LINES = [
 
 REQUIRED = ["headline", "url", "source", "published", "summary", "practice_area"]
 
+# Where the hosted page's Refresh button sends you, since a static public page can't
+# trigger a cloud run itself without embedding a credential.
+ROUTINE_URL = "https://claude.ai/code/routines/trig_011WCaBkju3UMBApJV2QZ2W6"
+
 
 def load_snapshots():
     """Return (items, dates_desc, notes_by_date, warnings)."""
@@ -123,6 +127,25 @@ TEMPLATE = r"""<!doctype html>
   .wrap { max-width: 900px; margin: 0 auto; padding: 32px 20px 80px; }
   header h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.01em; }
   header p { margin: 0; color: var(--muted); font-size: 14px; }
+  .hrow { display: flex; gap: 16px; align-items: flex-start; justify-content: space-between; }
+  .btn {
+    font: inherit; font-size: 14px; font-weight: 500; white-space: nowrap;
+    padding: 8px 15px; cursor: pointer; border-radius: 8px;
+    background: var(--accent); color: var(--panel); border: 1px solid transparent;
+  }
+  .btn:hover:not(:disabled) { filter: brightness(1.08); }
+  .btn:disabled { opacity: .55; cursor: default; }
+  .status {
+    margin: 12px 0 0 !important; font-size: 13.5px; padding: 9px 12px;
+    border-radius: 8px; background: var(--chip); border: 1px solid var(--line);
+  }
+  .status.ok { border-color: #2e7d52; }
+  .status.err { border-color: #b3453b; }
+  .status.warn { border-color: #b08300; }
+  @media (max-width: 560px) {
+    .hrow { flex-direction: column; }
+    .btn { width: 100%; }
+  }
 
   .panel {
     background: var(--panel); border: 1px solid var(--line); border-radius: 10px;
@@ -182,8 +205,14 @@ TEMPLATE = r"""<!doctype html>
 <body>
 <div class="wrap">
   <header>
-    <h1>Actuarial &amp; Data Science News</h1>
-    <p id="sub"></p>
+    <div class="hrow">
+      <div>
+        <h1>Actuarial &amp; Data Science News</h1>
+        <p id="sub"></p>
+      </div>
+      <button class="btn" id="refresh" type="button">Refresh</button>
+    </div>
+    <p class="status" id="status" hidden></p>
   </header>
 
   <div class="panel">
@@ -322,6 +351,70 @@ TEMPLATE = r"""<!doctype html>
     $('list').innerHTML = html;
   }
 
+  // ---- Refresh button -------------------------------------------------------
+  // Served from localhost by serve.py, the button really runs the refresh. On the
+  // hosted page there is no backend to call, so it opens the scheduled routine
+  // instead — triggering a cloud run from the browser would need a token, and this
+  // page is public.
+  var ROUTINE_URL = /*__ROUTINE_URL__*/;
+  var local = ['localhost', '127.0.0.1', '[::1]', ''].indexOf(location.hostname) >= 0
+    && location.protocol !== 'file:';
+  var btn = $('refresh'), statusEl = $('status');
+
+  function say(msg, kind) {
+    statusEl.hidden = !msg;
+    statusEl.textContent = msg || '';
+    statusEl.className = 'status' + (kind ? ' ' + kind : '');
+  }
+
+  btn.textContent = local ? 'Refresh now' : 'Refresh…';
+  btn.title = local
+    ? "Fetch today's news and rebuild this page"
+    : 'Opens the scheduled routine, where you can run it on demand';
+
+  btn.addEventListener('click', function () {
+    if (!local) {
+      window.open(ROUTINE_URL, '_blank', 'noopener');
+      say('Opened the routine in a new tab — press “Run now” there. This page picks up the ' +
+          'result a minute or two after the run finishes. To refresh from your own machine ' +
+          'instead, run: python3 serve.py');
+      return;
+    }
+    btn.disabled = true;
+    say('Starting…');
+    fetch('/api/refresh', { method: 'POST' })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.state === 'busy') { say('A refresh is already running.', 'warn'); btn.disabled = false; }
+        else { poll(); }
+      })
+      .catch(function () {
+        say('Could not reach the local helper. Start it with: python3 serve.py', 'err');
+        btn.disabled = false;
+      });
+  });
+
+  function poll() {
+    fetch('/api/refresh/status')
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        if (j.state === 'running') {
+          say('Reading articles… this takes a few minutes.' + (j.last ? ' — ' + j.last : ''));
+          setTimeout(poll, 2500);
+        } else if (j.state === 'done') {
+          say('Done — reloading.', 'ok');
+          setTimeout(function () { location.reload(); }, 800);
+        } else {
+          say('Refresh failed: ' + (j.last || 'check the serve.py console'), 'err');
+          btn.disabled = false;
+        }
+      })
+      .catch(function () {
+        say('Lost contact with the local helper.', 'err');
+        btn.disabled = false;
+      });
+  }
+
   $('foot').textContent = 'Generated ' + D.generated + ' by build.py · static file, no runtime dependencies';
   render();
 })();
@@ -346,6 +439,7 @@ def main():
         TEMPLATE.replace("/*__DATA__*/", blob)
         .replace("/*__PA__*/", json.dumps(PRACTICE_AREAS))
         .replace("/*__BL__*/", json.dumps(BUSINESS_LINES))
+        .replace("/*__ROUTINE_URL__*/", json.dumps(ROUTINE_URL))
     )
     OUT.write_text(html, encoding="utf-8")
 

@@ -26,6 +26,8 @@ Each run:
 ```
 index.html              generated dashboard — never hand-edit
 build.py                deterministic renderer: data/*.json -> index.html
+refresh.sh              manual refresh: run agent, rebuild, commit, push
+serve.py                local server that makes the in-page Refresh button work
 data/YYYY-MM-DD.json    one snapshot per run day; the durable record
 data/seen.json          dedupe ledger: normalized URL -> first-seen date
 .claude/agents/         the news-dashboard agent definition
@@ -36,7 +38,27 @@ refresh and is filterable by date.
 
 ## Running it manually
 
-You don't have to wait for the 8am routine:
+You don't have to wait for the 8am routine.
+
+### The Refresh button
+
+```bash
+python3 serve.py            # then open http://127.0.0.1:8787/ and click Refresh
+python3 serve.py --push     # Refresh also pushes, so the live site updates too
+```
+
+The button does the real thing when the page is served by `serve.py`: it runs the refresh,
+streams progress into the page, and reloads when the new items are in. By default it commits
+locally and leaves pushing to you; `--push` makes it go all the way to the live site.
+
+`serve.py` binds to `127.0.0.1` only, on purpose — `POST /api/refresh` executes `refresh.sh`,
+so it must not be exposed to a network.
+
+On the **hosted** page the same button opens the scheduled routine instead, where you can run
+it on demand. A static page on GitHub Pages has no backend, and triggering a cloud run from the
+browser would mean embedding a credential in a public repo.
+
+### From the command line
 
 ```bash
 ./refresh.sh                # fetch today's news, rebuild, commit, push (updates the live site)
