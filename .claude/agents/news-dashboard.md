@@ -28,8 +28,11 @@ A run must finish in about 10 minutes. Spend the time on depth, not breadth, and
 narrowing the candidate pool rather than by skimming.
 
 - **Batch your fetches.** Issue 5–8 `WebFetch` calls in a single message rather than one at a time.
-  Serial fetching is the main thing that blows the budget. Fetch all the feeds in one batch, then all
-  the surviving candidate articles in one or two more.
+  Serial fetching is the main thing that blows the budget. There are now twelve actuarial sources plus
+  five data science ones, so plan on three batches of feeds. Fetch the six commercial-lines trade feeds
+  in the first batch — they carry the highest yield, so if you run out of time you have already got the
+  items that matter. The institutional sources (SOA, IFoA, The Actuary, InsuranceERM) go last; they
+  rarely produce anything under the §3a filter.
 - **Screen before you read.** Apply §3a and §3b to feed titles and summaries first. Never spend a
   full-text fetch on an item you can already tell will be dropped.
 - **Cap the pool.** Rank surviving candidates by relevance and fetch at most 12 per section. Publishing
@@ -49,9 +52,14 @@ the number of items, not the depth of each.
 - `Read` `data/seen.json` (if missing, treat as `{}`).
 - `Bash`: `ls data/` to see which dates already exist.
 - Establish today's date with `date -u +%F`. Do not trust your own sense of the date.
-- Target window: items published in the last 24–48 hours. If the last snapshot is older than that,
-  widen the window to cover the gap since that snapshot instead (so nothing is silently lost), and note
-  the widening in `run_notes`.
+- Target window — **different per section**:
+  - **Actuarial: 7 days.** Commercial-lines trade press is not a daily-cadence business, and a 48-hour
+    window was rejecting relevant items that were only three or four days old.
+  - **Data Science: 24–48 hours.** arXiv publishes daily; wider just adds noise.
+- If the last snapshot is older than the applicable window, widen to cover the gap since that snapshot
+  so nothing is silently lost, and note the widening in `run_notes`.
+- The 7-day Actuarial window makes `data/seen.json` load-bearing: without it the same item reappears for
+  seven consecutive days. Dedupe carefully (step 6), and never reset the ledger to force a fuller run.
 
 ### 2. Fetch sources
 
@@ -72,6 +80,26 @@ CAS research/publications pages, and similar institutional hubs. Record every so
 | The Actuary Magazine | `https://www.theactuarymagazine.org/feed/` | start at `https://www.theactuarymagazine.org/` and look for news/articles/features if the feed is unavailable |
 | InsuranceERM | site RSS if discoverable | start at `https://www.insuranceerm.com/` and look for news/articles/research or archive pages if needed |
 | Artemis | `https://www.artemis.bm/feed/` | start at `https://www.artemis.bm/` and look for news/articles/market commentary if the feed is unavailable |
+
+**Actuarial — commercial-lines trade press (fetch these FIRST).** All six were verified working with
+same-day items on 2026-07-28. This is where the §3a filter's content actually lives; the institutional
+sources above rarely publish commercial P&C inside a news window, so they are the low-yield tail, not
+the core.
+
+| Source | Feed | Notes |
+|---|---|---|
+| Business Insurance | `https://www.businessinsurance.com/feed/` | ~20 items. The commercial-lines trade paper — highest expected yield. |
+| Risk & Insurance | `https://riskandinsurance.com/feed/` | ~10 items. Written for commercial risk managers; strong fit. |
+| Insurance Journal | `https://www.insurancejournal.com/feed/` | ~30 items. Highest volume, but mixes personal lines — screen hard. |
+| Carrier Management | `https://www.carriermanagement.com/feed/` | ~10 items. Carrier strategy and underwriting. |
+| Claims Journal | `https://www.claimsjournal.com/feed/` | ~15 items. Claims trends — social inflation, verdicts, litigation. Mixed personal/commercial. |
+| Reinsurance News | `https://www.reinsurancene.ws/feed/` | ~10 items. Overlaps Artemis; the §3a ILS/capital-markets exclusion applies equally here. |
+
+Known dead ends — do not waste budget retrying these:
+- **InsuranceERM** — Cloudflare JS challenge, 403 to both `WebFetch` and browser-UA `curl`. The block
+  happens before any content loads, so homepage-first navigation does not help. Note and move on.
+- **PropertyCasualty360** (`/feed/` 403), **Insurance Business America** (`/us/rss/` is not RSS), and
+  **NCCI** (no article feed found) were evaluated on 2026-07-28 and rejected. Do not re-add them.
 
 **Data Science / ML**
 
@@ -125,10 +153,16 @@ follow from it:
   thin. An empty SOA slot is the correct result, not a fetch failure — say which it was in `run_notes`.
 - **Artemis will lose most of its items**, since it is largely ILS and cat-bond deal flow.
 
-So the Actuarial section will frequently land below the 5–8 target. That is expected. **Do not pad,
-do not relax the filter to hit a count, and do not smuggle a life or personal-lines item in by
-arguing it has commercial relevance.** Record the shortfall in `run_notes` with the count you dropped
-per source, e.g. `"SOA: 4 items in window, all life/health — 0 kept under commercial P&C filter"`.
+**Do not pad, do not relax the filter to hit a count, and do not smuggle a life or personal-lines item
+in by arguing it has commercial relevance.** Record what you dropped per source in `run_notes`, e.g.
+`"SOA: 4 items in window, all life/health — 0 kept under commercial P&C filter"`.
+
+That said, as of 2026-07-28 a thin Actuarial section is **no longer the expected outcome**. Six
+commercial-lines trade feeds were added and the Actuarial window widened to 7 days precisely because
+the section was landing at 3–4 items. With Business Insurance, Risk & Insurance, Insurance Journal,
+Carrier Management, Claims Journal, and Reinsurance News in the mix, hitting 5–8 should be routine.
+If you still come up short, that is a finding worth stating plainly in `run_notes` — say which feeds
+were dry and why — rather than a normal result to wave through.
 
 Because of this filter, `business_line` on Actuarial items will nearly always be `Commercial Insurance`,
 sometimes `Reinsurance` or `Other`. `Personal Insurance` should essentially never appear; if you find

@@ -16,6 +16,16 @@ Sources:
 - InsuranceERM — start at https://www.insuranceerm.com/ and look for news, articles, research, or archive pages if needed.
 - Artemis (ILS/cat risk) — start at https://www.artemis.bm/ and look for news, articles, or market commentary if the feed is unavailable.
 
+Commercial-lines trade press (added 2026-07-28; all six feeds verified live and same-day at the time
+of adding). These are the primary supply for the commercial P&C filter below — the actuarial
+institutions above rarely publish commercial P&C inside a news window, so fetch these first:
+- Business Insurance — https://www.businessinsurance.com/feed/
+- Risk & Insurance — https://riskandinsurance.com/feed/
+- Insurance Journal — https://www.insurancejournal.com/feed/
+- Carrier Management — https://www.carriermanagement.com/feed/
+- Claims Journal — https://www.claimsjournal.com/feed/
+- Reinsurance News — https://www.reinsurancene.ws/feed/
+
 ### 2. Data Science / ML
 New techniques, tools, and research relevant to actuarial applications.
 
@@ -47,7 +57,14 @@ keep/drop lists.
 The Data Science section is not subject to this filter.
 
 ## Cadence
-Daily refresh. Only surface items published in the last 24–48 hours; dedupe against previous runs.
+Daily refresh, with a different lookback per section (changed 2026-07-28):
+
+- **Actuarial — 7 days.** Commercial-lines trade press does not publish on a daily cadence, and a strict
+  48-hour window was rejecting genuinely relevant items that were merely three or four days old.
+- **Data Science — 24–48 hours.** arXiv publishes daily; a wider window here just adds noise.
+
+Dedupe against previous runs, which is what stops the wider Actuarial window from re-surfacing the same
+item for seven consecutive days. The dedupe ledger is doing real work now, so do not reset it casually.
 
 ## Content depth
 Don't over-read the material. Treat this as a lightweight headline-first dashboard: screen each headline and brief source description for actuarial/data-science relevance and commercial-insurance fit, then provide a short summary and a link for more information. The goal is not to reproduce the full article or paper, and summaries should stay concise (1–2 sentences) rather than substantive deep dives.
