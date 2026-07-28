@@ -1,10 +1,18 @@
 {
-  "_comment": "Live config for the daily cloud routine that refreshes this dashboard. Created as trig_011WCaBkju3UMBApJV2QZ2W6 — manage at https://claude.ai/code/routines/trig_011WCaBkju3UMBApJV2QZ2W6. This file is a checked-in copy for reference and re-creation; editing it does NOT change the live routine.",
-  "_dst_note": "Cron is fixed UTC and cannot follow daylight saving, so this fires TWICE daily — 12:00 and 13:00 UTC. Exactly one of those is 08:00 in America/Toronto year-round (12:00 UTC during EDT, 13:00 UTC during EST). STEP 0 of the prompt checks the local hour and no-ops the other firing. Net effect: the real run is always 8am local, at the cost of one trivial skipped session per day. Do not 'fix' the double schedule by removing an hour without also removing the guard.",
+  "_comment": "Reference copy of the live daily routine (trig_011WCaBkju3UMBApJV2QZ2W6). Manage at https://claude.ai/code/routines/trig_011WCaBkju3UMBApJV2QZ2W6. Editing this file does NOT change the live routine — it must be pushed via the RemoteTrigger API.",
+  "_dst_note": "Cron is fixed UTC and cannot follow daylight saving, so this fires TWICE daily — 12:00 and 13:00 UTC. Exactly one of those is 08:00 in America/Toronto year-round (12:00 UTC during EDT, 13:00 UTC during EST). STEP 0 checks the local hour and no-ops the other firing. Do not remove an hour without also removing the guard.",
+  "_prompt_note": "The prompt deliberately defers to .claude/agents/news-dashboard.md and actuarial-ds-news-dashboard-instructions.md, which change often. The inline restatement is a safety net for the mistakes that have actually happened (overwrite instead of merge, missing item_type, deep reads instead of headline-first). When the spec changes materially, update this prompt too — a stale prompt that contradicts the repo files is worse than a short one.",
   "name": "Daily Actuarial & DS News Dashboard (8am Toronto)",
   "cron_expression": "0 12,13 * * *",
   "enabled": true,
-  "mcp_connections": [],
+  "mcp_connections": [
+    {
+      "connector_uuid": "81b9f531-7593-482c-b5c8-3f64fd5c7bf8",
+      "name": "Slack",
+      "url": "https://mcp.slack.com/mcp",
+      "_note": "Slack only. The API attaches every connector on the account by default; Gmail/Drive/Linear/Granola were deliberately cleared — a news scraper has no business holding those credentials."
+    }
+  ],
   "job_config": {
     "ccr": {
       "environment_id": "env_018sLMmhPSrxNkNa2aMnw7eN",
@@ -17,7 +25,7 @@
             }
           }
         ],
-        "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch", "WebSearch"]
+        "allowed_tools": ["Bash", "Read", "Write", "Edit", "Glob", "Grep", "WebFetch", "WebSearch", "ToolSearch", "mcp__Slack__slack_send_message"]
       },
       "events": [
         {
@@ -28,7 +36,7 @@
             "parent_tool_use_id": null,
             "message": {
               "role": "user",
-              "content": "## STEP 0 — DST guard. Do this before anything else.\n\nThis routine is scheduled at both 12:00 and 13:00 UTC so that one of the two is always exactly 8:00 AM in America/Toronto regardless of daylight saving. Only the 8:00 AM firing should do work.\n\nRun exactly this:\n\n```\nTZ=America/Toronto date +%H\n```\n\nIf the output is NOT `08`, stop immediately. Do not fetch anything, do not read any files, do not commit. Reply with only: `Skipped — not 8am Toronto (local hour HH).` and end your run. This is the expected outcome for one of the two daily firings and is not an error.\n\nIf the output IS `08`, continue.\n\n## The run\n\nRefresh the Actuarial & Data Science news dashboard in this repo.\n\nThe complete run procedure is in `.claude/agents/news-dashboard.md`. Read that file first and follow it exactly — it lists every source with its feed URL and fallback, the relevance filter for arXiv, the extraction and summarization standard, the tag vocabularies, the dedupe rules, and the snapshot JSON schema. Also read `actuarial-ds-news-dashboard-instructions.md` for the product spec; it wins on any conflict.\n\nSummary of what a correct run produces:\n\n1. Establish today's date with `date -u +%F`. Do not infer it.\n2. Read `data/seen.json` and `ls data/` to see what has already been collected. If a snapshot for today already exists, this is a re-run — rebuild it rather than duplicating items.\n3. Fetch the Actuarial and Data Science sources, preferring feeds/APIs over scraping. Keep items published in the last 24-48 hours; if the newest existing snapshot is older than that, widen the window to cover the gap so nothing is lost.\n4. WebFetch each candidate's full article or paper — never summarize from a headline or an abstract alone. Write a 3-5 sentence summary carrying the actual specifics: the methodology or change proposed, the supporting data and numbers, what changed versus prior practice, and why it matters to actuarial work.\n5. Tag every item with a practice area, and every Actuarial item with a business line, using only the vocabularies in the agent file. Judge from the content you read, not keywords in the title.\n6. Dedupe against `data/seen.json` using the normalization rules in the agent file (including collapsing arXiv versions).\n7. Target 5-8 items per section. Do NOT pad to hit that number — a short section reported honestly is correct. Record every source that failed, was paywalled, or was skipped in the snapshot's `run_notes` array; those surface on the dashboard.\n8. Write `data/YYYY-MM-DD.json` for today, update `data/seen.json`, then run `python3 build.py` and confirm it reports the expected counts with no validation warnings you haven't addressed.\n\nFinally, commit and push so GitHub Pages redeploys:\n\n```\ngit add -A\ngit commit -m \"News: <today's date> — <N> actuarial, <M> data science\"\ngit push origin main\n```\n\nIf the push is rejected because the remote moved ahead, `git pull --rebase origin main`, re-run `python3 build.py`, and push again.\n\nHard rules: never invent an item, a date, a number, or a summary detail — everything must trace to a page you actually fetched. Never hand-edit `index.html`; it is generated by `build.py`. Never delete or alter a snapshot from a previous day.\n\nEnd your run with a short report: item counts per section, the tag spread, every source that failed and why, and anything genuinely notable."
+              "content": "See the live routine for the authoritative prompt. Summary of its five steps: (0) DST guard — exit unless TZ=America/Toronto hour is 08, and send no Slack message when skipping; (1) read .claude/agents/news-dashboard.md and actuarial-ds-news-dashboard-instructions.md, which win over the prompt; (2) run — merge never overwrite, never reset seen.json, Actuarial 7-day window and Data Science 24-48h, headline-first 3-sentence summaries, item_type required on every item, commercial P&C filter on Actuarial, six commercial-lines trade feeds first with a curl fallback for Business Insurance, skip InsuranceERM; (3) commit and push, rebasing if rejected; (4) send exactly one short Slack DM to U0BGG3J1S8Y after a successful push, and none if the run skipped or failed, so a missing message signals breakage; (5) report new-item count separately from the total, plus per-source outcomes."
             }
           }
         }
