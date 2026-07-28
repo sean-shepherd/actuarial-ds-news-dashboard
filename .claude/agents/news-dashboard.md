@@ -19,8 +19,16 @@ data/YYYY-MM-DD.json    # one snapshot per run day; the durable record
 data/seen.json          # dedupe ledger: normalized URL -> first-seen date
 ```
 
-`data/` snapshots are append-only history. Never delete or rewrite a past snapshot. Rewriting today's
-snapshot is fine if you re-run on the same day.
+`data/` snapshots are append-only history. Never delete or rewrite a past snapshot.
+
+**Re-running on the same day: MERGE, never overwrite.** If `data/YYYY-MM-DD.json` already exists for
+today, load it and add your new items to it, deduping by normalized URL. Do not replace the file with
+only what this run collected.
+
+The reason is a trap that has already bitten once. `data/seen.json` still holds the URLs the earlier run
+logged, so those items are skipped on collection — if you then overwrite the snapshot, they exist in the
+ledger but in no snapshot at all, and they silently disappear from the dashboard. A blind overwrite
+therefore *deletes* the earlier run's work rather than superseding it. Merge, and the two runs compose.
 
 ## History and the three-year baseline
 
