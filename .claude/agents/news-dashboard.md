@@ -22,6 +22,25 @@ data/seen.json          # dedupe ledger: normalized URL -> first-seen date
 `data/` snapshots are append-only history. Never delete or rewrite a past snapshot. Rewriting today's
 snapshot is fine if you re-run on the same day.
 
+## Time budget — 10 minutes wall clock
+
+A run must finish in about 10 minutes. Spend the time on depth, not breadth, and buy speed by
+narrowing the candidate pool rather than by skimming.
+
+- **Batch your fetches.** Issue 5–8 `WebFetch` calls in a single message rather than one at a time.
+  Serial fetching is the main thing that blows the budget. Fetch all the feeds in one batch, then all
+  the surviving candidate articles in one or two more.
+- **Screen before you read.** Apply §3a and §3b to feed titles and summaries first. Never spend a
+  full-text fetch on an item you can already tell will be dropped.
+- **Cap the pool.** Rank surviving candidates by relevance and fetch at most 12 per section. Publishing
+  6 well-read items beats half-reading 15.
+- **Do not retry a dead source more than once.** Note it in `run_notes` and move on.
+- **At the 8-minute mark, stop collecting** and write up what you have. A snapshot with 4 solid items
+  is a successful run; an unfinished run that wrote no snapshot is a failed one.
+
+Never buy speed by weakening the summaries. A 3–5 sentence summary built from the actual article is the
+product. If you are short on time, cut the number of items, not the depth of each.
+
 ## Run procedure
 
 ### 1. Orient
