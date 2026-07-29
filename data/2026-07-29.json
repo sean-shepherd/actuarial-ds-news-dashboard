@@ -1,0 +1,254 @@
+{
+  "date": "2026-07-29",
+  "generated_at": "2026-07-29T15:10:39Z",
+  "window": "actuarial 2026-07-23..2026-07-29 (7 days); data_science 2026-07-27..2026-07-29 (~48h)",
+  "sections": {
+    "actuarial": [
+      {
+        "headline": "Competition drives Asia insurance rates down 5%: Marsh",
+        "url": "https://www.businessinsurance.com/competition-drives-asia-insurance-rates-down-5-marsh/",
+        "source": "Business Insurance",
+        "published": "2026-07-29",
+        "summary": "Commercial insurance rates across Asia fell 5% in Q2 2026, with cyber posting the steepest decline at 8% amid abundant capacity, according to Marsh. The softening cycle mirrors trends already seen in property and casualty pricing globally, squeezing underwriting margins even as competition intensifies for market share. For pricing actuaries, it signals a need to reassess loss-cost trend assumptions as capacity outpaces demand across the region.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Property insurance rates fall as competition grows",
+        "url": "https://www.businessinsurance.com/property-insurance-rates-fall-as-competition-grows/",
+        "source": "Business Insurance",
+        "published": "2026-07-29",
+        "summary": "Australian commercial property rates fell 15% in Q2 2026, the steepest quarterly decline since the softening cycle began two years ago, driven by excess underwriting capacity. The drop illustrates how quickly rate adequacy can erode once new capacity enters a market, a key input for commercial property pricing models. Actuaries tracking global rate cycles will want to watch whether this softening spreads to other Asia-Pacific commercial lines.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Lockton launches data center practice",
+        "url": "https://www.businessinsurance.com/lockton-launches-data-center-practice/",
+        "source": "Business Insurance",
+        "published": "2026-07-29",
+        "summary": "Lockton on Wednesday launched a global data centers and digital infrastructure practice to address risks facing owners, operators, developers, investors and technology providers. The move follows a wave of broker and carrier activity around data center risk, an emerging commercial property and casualty exposure with limited historical loss data. It signals growing demand for specialized underwriting and risk engineering as AI-driven infrastructure buildout accelerates.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Services not covered by fee schedules add to rising medical costs: Report",
+        "url": "https://www.businessinsurance.com/services-not-covered-by-fee-schedules-add-to-rising-medical-costs-report/",
+        "source": "Business Insurance",
+        "published": "2026-07-29",
+        "summary": "A growing share of workers' compensation medical spending falls outside state fee-schedule rates, a trend a new report says is contributing to rising medical payments in comp claims. Because fee schedules are the primary lever regulators and payers use to control medical severity trend, erosion of their coverage complicates loss-cost forecasting. Reserving and pricing actuaries in workers' comp should watch this as a driver of upward severity pressure.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Early denials draw scrutiny as cumulative trauma claims surge",
+        "url": "https://www.businessinsurance.com/early-denials-draw-scrutiny-as-california-cumulative-trauma-claims-surge/",
+        "source": "Business Insurance",
+        "published": "2026-07-29",
+        "summary": "Rapid growth in cumulative trauma claims in California is intensifying scrutiny of how quickly insurers and employers deny such claims, and whether early denials push more disputes into litigation. Cumulative trauma claims are notoriously hard to reserve because onset and causation are diffuse, making claims-handling practices a direct driver of loss development. The trend is a workers' comp reserving signal worth tracking as California's claims environment evolves.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Why Workers' Comp Leaders Are Feeling the Squeeze — and Where They're Finding Answers",
+        "url": "https://riskandinsurance.com/why-workers-comp-leaders-are-feeling-the-squeeze-and-where-theyre-finding-answers/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-29",
+        "summary": "Despite stable injury frequencies, workers' compensation programs face mounting complexity as medical and indemnity severity both climbed roughly 4% in recent accident years, with behavioral health claims running at nearly four times the cost of standard claims. An aging workforce and evolving regulations compound the challenge for program leaders trying to manage loss costs. The severity trends are a useful pricing and reserving input for actuaries modeling comp loss development.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "Why Captives Work: How the Right Culture and Commitment Drive Long-Term Success",
+        "url": "https://riskandinsurance.com/why-captives-work-how-the-right-culture-and-commitment-drive-long-term-success/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-29",
+        "summary": "Captive insurance structures offer greater transparency and control over risk, but the article argues success depends on organizational culture and genuine commitment rather than short-term premium savings. It frames captives as a risk-management mindset requiring financial capacity and long-term perspective, not just an alternative-risk-financing mechanic. For commercial insurance actuaries, it's a reminder that captive feasibility studies must weigh governance readiness alongside actuarial loss projections.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "The Hidden Driver of the High Cost Workers' Comp Claims",
+        "url": "https://riskandinsurance.com/the-hidden-driver-of-the-high-cost-workers-comp-claims/",
+        "source": "Risk & Insurance",
+        "published": "2026-07-29",
+        "summary": "Workplace injuries take roughly twice as long to heal as non-work injuries, a gap the article attributes partly to a \"perceived injustice\" mindset unique to employment relationships. It introduces the Injustice Experience Questionnaire as a tool to flag claims likely to become chronic or catastrophic. For workers' comp reserving actuaries, this is a novel psychosocial predictor worth testing alongside traditional severity indicators in claims triage models.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "Cost of a Data Breach Reaches Record $5 Million on Average",
+        "url": "https://www.insurancejournal.com/news/national/2026/07/29/879536.htm",
+        "source": "Insurance Journal",
+        "published": "2026-07-29",
+        "summary": "IBM's Cost of a Data Breach Report finds average breach costs have climbed to nearly $5 million, with AI cited as radically shifting cybersecurity risk dynamics. The figure is a standard benchmark cyber underwriters use to calibrate limits, retentions, and loss-cost assumptions for cyber liability programs. Rising average severity alongside AI-driven attack and defense capability suggests continued repricing pressure in commercial cyber insurance.",
+        "practice_area": "Pricing",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Viewpoint: French Climate Lawsuit Offers Window Into Next Round of Global Legal Fight",
+        "url": "https://www.insurancejournal.com/news/international/2026/07/29/879518.htm",
+        "source": "Insurance Journal",
+        "published": "2026-07-29",
+        "summary": "A French court ordered a major European energy company to report emissions from customers' use of its products, expanding corporate climate accountability litigation. The ruling previews a next wave of climate liability claims that could reach beyond direct emitters to companies further down the value chain. Commercial liability and D&O actuaries should treat this as an early signal of emerging climate litigation exposure to monitor in loss reserves.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "AI Finding Twice as Many Cyber Flaws in 2026 as It Did in 2025",
+        "url": "https://www.carriermanagement.com/news/2026/07/29/290456.htm",
+        "source": "Carrier Management",
+        "published": "2026-07-29",
+        "summary": "Software security vulnerabilities are being discovered at roughly double the 2025 rate in 2026, with over 45,000 flaws logged in the U.S. national vulnerability database through late July, driven by AI-assisted discovery tools. Faster vulnerability discovery cuts both ways for cyber underwriters, expanding both attacker capability and defenders' patching speed. The trend is a leading indicator worth tracking for cyber liability pricing and aggregation risk modeling.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Insurer Rewards Can Boost Climate Resilience Spending, Aon Says",
+        "url": "https://www.claimsjournal.com/news/national/2026/07/29/339083.htm",
+        "source": "Claims Journal",
+        "published": "2026-07-29",
+        "summary": "An Aon executive argues insurers should reward policyholders who invest in climate-resilience measures rather than relying solely on higher premiums to reflect rising catastrophe risk. The framing challenges standard risk-based pricing logic by treating mitigation incentives as a lever for improving portfolio-wide loss experience, not just individual risk selection. ERM and pricing actuaries evaluating climate adaptation strategies may find this a useful counterpoint to pure rate-based risk signaling.",
+        "practice_area": "ERM",
+        "business_line": "Commercial Insurance",
+        "item_type": "Article"
+      },
+      {
+        "headline": "Kumamoto quake losses likely to remain below 2016 levels: Howden Re Japan",
+        "url": "https://www.reinsurancene.ws/kumamoto-quake-losses-likely-to-remain-below-2016-levels-howden-re-japan/",
+        "source": "Reinsurance News",
+        "published": "2026-07-29",
+        "summary": "A magnitude 7.1 earthquake struck Kumamoto Prefecture, and Howden Re Japan's CEO estimates insured losses will stay below the 2016 Kumamoto event, more comparable to the 2024 Noto earthquake, barring significant aftershocks. Semiconductor facilities in the region suspended operations for safety checks, adding a business-interruption dimension to the loss estimate. Reinsurance and catastrophe modeling actuaries will want this early loss-estimate anchor as claims data develops over coming weeks.",
+        "practice_area": "Capital Modelling",
+        "business_line": "Reinsurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "The Hanover posts record net income of $192m as CEO confirms retirement",
+        "url": "https://www.reinsurancene.ws/the-hanover-posts-record-net-income-of-192m-as-ceo-confirms-retirement/",
+        "source": "Reinsurance News",
+        "published": "2026-07-29",
+        "summary": "The Hanover Insurance Group reported Q2 2026 net income of $191.6 million, up from $157 million a year earlier, with its combined ratio improving to 91.2%, alongside CEO John Roche's confirmed year-end retirement. The improved combined ratio signals genuine underwriting improvement rather than just favorable reserve development or investment gains. Reserving and capital actuaries at commercial carriers can use this as a benchmark for underwriting-cycle performance in the current market.",
+        "practice_area": "Reserving",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Rokstone Agriculture expands livestock offering with new $20m AXA XL capacity agreement",
+        "url": "https://www.reinsurancene.ws/rokstone-agriculture-expands-livestock-offering-with-new-20m-axa-xl-capacity-agreement/",
+        "source": "Reinsurance News",
+        "published": "2026-07-29",
+        "summary": "Rokstone Agriculture announced a new excess livestock facility backed by up to $20 million in AXA XL capacity, lifting total livestock capacity to $30 million. The expansion lets the MGA underwrite a broader range of livestock exposures on a non-admitted basis, a specialty commercial agriculture line with thin historical loss data. Pricing actuaries in specialty and E&S lines should note the added capacity as a signal of underwriting appetite in agricultural risk.",
+        "practice_area": "Capital Modelling",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Verisk acquires McKenzie Intelligence Services to enhance catastrophe event insights",
+        "url": "https://www.reinsurancene.ws/verisk-acquires-mckenzie-intelligence-services-to-enhance-catastrophe-event-insights/",
+        "source": "Reinsurance News",
+        "published": "2026-07-29",
+        "summary": "Verisk acquired McKenzie Intelligence Services, a geospatial intelligence firm specializing in real-time catastrophe and conflict event analysis, to strengthen its catastrophe risk solutions portfolio. The deal adds pre-event alerting and post-event exposure-damage assessment capability, both critical inputs for rapid claims triage and loss estimation after a cat event. Catastrophe modeling and reserving actuaries should expect faster, more granular post-event data feeding into loss reserve estimates.",
+        "practice_area": "Predictive Modeling",
+        "business_line": "Commercial Insurance",
+        "item_type": "News"
+      },
+      {
+        "headline": "Reinsurance market to benefit from newly launched EXPAS explosion risk intelligence platform",
+        "url": "https://www.reinsurancene.ws/reinsurance-market-to-benefit-from-newly-launched-expas-explosion-risk-intelligence-platform/",
+        "source": "Reinsurance News",
+        "published": "2026-07-29",
+        "summary": "EXPAS launched an operational explosion-risk intelligence platform combining engineering evidence and performance data to produce measurable indicators of loss probability at industrial sites. The tool aims to bridge the gap between traditional periodic risk assessments and real-time operational conditions, a data gap that has long complicated E&S property underwriting. Capital modeling and ERM actuaries covering energy and industrial risk should note the platform as a step toward more dynamic exposure monitoring.",
+        "practice_area": "ERM",
+        "business_line": "Reinsurance",
+        "item_type": "News"
+      }
+    ],
+    "data_science": [
+      {
+        "headline": "FinAbstain: Uncertainty-Calibrated Multimodal RAG for Selective Financial Forecasting",
+        "url": "https://arxiv.org/abs/2607.24875",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-29",
+        "summary": "FinAbstain proposes a research framework for uncertainty-calibrated financial forecasting that combines retrieval-augmented generation with temperature scaling, isotonic regression, and conformal prediction to decide when a model should abstain rather than guess. The abstention-based design directly parallels actuarial practice of flagging cases for human review when model confidence is low. It's a useful template for building selective-prediction pipelines in any forecasting task where overconfidence is costly, including pricing and reserving.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Empirical Evaluation of Out-Of-Distribution Performance of Tabular Foundation Models",
+        "url": "https://arxiv.org/abs/2607.26000",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-29",
+        "summary": "This paper benchmarks nine tabular foundation models, including TabPFN and TabICL variants, on out-of-distribution performance across datasets with label, socioeconomic, and geographic shift, finding all degrade systematically once deployment distributions diverge from training. The result confirms that the classical in-distribution-versus-OOD gap seen in tree-based models has not been solved by tabular foundation models. For actuaries evaluating these newer architectures for pricing or underwriting, it's a caution against assuming foundation-model robustness without explicit shift testing.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Bias-corrected Cox regression with AI-extracted covariates via calibration summary statistics",
+        "url": "https://arxiv.org/abs/2607.25868",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-29",
+        "summary": "This paper develops a bias-correction framework for Cox proportional hazards models when covariates come from AI-extraction pipelines rather than direct measurement, correcting the naive estimator via a post-hoc matrix operation built from vendor-reported calibration statistics. It also derives bias-adjusted confidence intervals and a sensitivity diagnostic for when residual bias could still matter. It directly addresses a real, growing problem for actuaries building mortality or claims models from AI-extracted medical or claims records.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Generalised Robust Bayes for Joint Inference of Model and Contamination",
+        "url": "https://arxiv.org/abs/2607.25665",
+        "source": "arXiv stat.ML",
+        "published": "2026-07-29",
+        "summary": "This paper introduces Hölder-Bayes, a Bayesian framework that jointly estimates model parameters and the proportion of contaminated outlier data, rather than only producing qualitatively robust posteriors as prior methods do. It derives theoretical bias bounds and converts posterior uncertainty into an observation-level outlier score without needing an external detection threshold. The joint estimate is relevant to actuarial reserving and pricing, where flagging anomalous claims or loss data matters as much as the underlying parameter estimate.",
+        "practice_area": "Predictive Modeling",
+        "business_line": null,
+        "item_type": "Research"
+      },
+      {
+        "headline": "Rethinking Likelihood Distributions: Student's t Likelihood Boosts Bayesian Neural Network Performance",
+        "url": "https://arxiv.org/abs/2607.25376",
+        "source": "arXiv cs.LG",
+        "published": "2026-07-29",
+        "summary": "This paper tests alternative likelihood distributions for Bayesian neural networks and finds Student's t consistently outperforms the standard Gaussian likelihood across regression tasks, independent of dataset or network architecture. Heavy-tailed likelihoods are already standard for modeling claims severity in actuarial work, so this result extends that intuition into deep uncertainty-quantification methods. It's a simple, easy-to-implement swap that predictive modeling teams using Bayesian neural nets for loss or severity forecasting could test directly.",
+        "practice_area": "AI/ML/Deep Learning",
+        "business_line": null,
+        "item_type": "Research"
+      }
+    ]
+  },
+  "run_notes": [
+    "Fresh day: data/2026-07-29.json did not exist prior to this run (confirmed via ls data/ and date -u +%F); no scheduled 10am run occurred, per the operator's note. data/seen.json (40 keys from 2026-07-28) was read but NOT reset; all 22 items published today are genuinely new URLs/arXiv IDs not present in it.",
+    "Business Insurance: WebFetch was not attempted (known 403 per standing guidance); went straight to Bash curl with a browser User-Agent, which returned HTTP 200 with all 20 feed items, parsed via a small Python/regex script. Fallback confirmed working again.",
+    "Business Insurance: 20 raw items, several already in seen.json from 2026-07-28 (comp medical inflation, Calif. excess-insurer ruling, Hanover hail-damage claim, El Nino crop insurance). Of the rest, 7 new items were kept (Asia/Australia commercial rate softening, Lockton data-center practice, WC fee-schedule medical costs, CA cumulative trauma claims, plus two dropped -- see below). Dropped: ADB Mongolia parametric sovereign disaster cover (public/sovereign risk financing, not business-insured commercial P&C); Oman Re 49% profit growth (thin earnings report, no P&C substance); Novo Nordisk shareholder suit, Berkley reinsurance-leadership appointment, a trademark dispute, an EY hacker-extortion story, and Hong Kong 32% premium growth (too line-ambiguous, mixes life/non-life) -- all no clear commercial P&C framing.",
+    "Business Insurance: also considered but dropped 'Wildfires pose limited financial risk to insurers: Report' and 'Fewer disasters lift Japanese insurers' profits' -- both describe insurer-wide impacts without specifying a commercial vs. personal-lines split. This follows the explicit precedent set in 2026-07-28.json's run_notes, which rejected a similar Japan non-life insurer profit item and a 'quieter hurricane season' piece for the same line-ambiguity reason.",
+    "Risk & Insurance: 10 raw items; 4 already in seen.json (construction CPPL bundling, AI/GL exclusions, cyber stable outlook, Vermont WC subrogation). 3 new items kept (WC program complexity/severity trends, captive insurance culture, Injustice Experience Questionnaire for WC claims). Dropped: a data-center-overbuying-insurance piece (same underlying Willis report already covered via Business Insurance's 'Unclear risks drive excess data center coverage' in yesterday's seen.json -- treated as duplicate), a preventive-maintenance podcast promo, and an MGA-growth webinar promo (no LOB substance).",
+    "Insurance Journal: 30 raw items, heavy non-insurance wire volume (people moves, personal auto/home, unrelated national/international news). 2 new items kept (IBM Cost of a Data Breach report; French climate-lawsuit viewpoint). Dropped as duplicates of stories already in seen.json from 2026-07-28: 'Great American Escapes Coverage for Grocery's Opioid Litigation Settlement' (same underlying case as yesterday's Harris Teeter/opioid coverage item) and 'Ride-Hailing Policies in New Jersey Must Provide PIP Benefits' (same NJ court ruling as yesterday's Liberty Mutual/Lyft item). Also dropped: Kin condo/flood launch (personal lines), Louisiana homeowners fraud arrest (personal lines), several people-moves and agency M&A items, and general wire news with no insurance framing (OpenAI/Hugging Face breach, EU sanctions, wage-and-hour settlements).",
+    "Carrier Management: 10 raw items; 'Construction Jobsite Theft' already in seen.json from 2026-07-28. 1 new item kept (AI doubling cyber-vulnerability discovery). Dropped: Zurich/Finma sales-ban story (explicitly names Zurich's 'corporate life and pensions unit' -- out of scope), a staged-accident fraud bill (primarily personal-auto fraud), a LexisNexis Home severity report (explicitly homeowners/personal lines), and leadership/diversity/Tesla items with no P&C substance.",
+    "Claims Journal: 15 raw items, mostly duplicates of Insurance Journal/Business Insurance wire stories or already in seen.json (J&J talc settlement, AI cyber-flaws story duplicated from Carrier Management). 1 new item kept (Aon on insurer rewards for climate resilience spending). Dropped as duplicate of yesterday's already-published items: 'Can Captive's Hands-On Vetting of Bars...' (same story as yesterday's Insurance Journal item) and 'Edison Rejects Blame for LA Fire...' (same story as yesterday's Insurance Journal item). A sponsored AI-medical-record-summarization piece was dropped as vendor-native advertising with no independent substance.",
+    "Reinsurance News: 10 raw items. 5 new items kept (Kumamoto quake insured-loss estimate from Howden Re; Hanover Q2 net income/combined ratio; Rokstone Agriculture livestock capacity; Verisk/McKenzie catastrophe-intelligence acquisition; EXPAS explosion-risk platform). Dropped as thin/capital-markets-mechanics or low P&C substance: Lemonade Q2 revenue (personal-lines insurtech carrier -- renters/home/pet/auto), European insurer earnings outlook from S&P (broad macro, no commercial P&C specificity), Aon Reinsurance Solutions Q2 revenue (broking revenue only), PPL market-intelligence dashboard launch (operational tool, thin), and Lloyd's ESG/sustainability investment survey (investment strategy, not underwriting).",
+    "Artemis: 10 raw items, 0 kept. Verisk/McKenzie duplicated the Reinsurance News version (kept there instead). The remainder split into: capital-markets/ILS mechanics excluded under the standing 3a exclusion (Twelve Securis cat-bond impact commentary, Arch ILS-operations appointment, Conduit Re retro/PML purchase, AXIS third-party capital fee income, secondary cat-bond trading rebound, Euler's $3-4.5bn Kumamoto insured-loss estimate -- redundant with the Howden Re figure already kept); WTW's UK pension longevity-swap launch (explicitly life/pensions, out of scope); and First Street's SCS-exposure-growth projection, which was dropped as 'an economy-wide exposure statistic, not a commercial insurer/product/pricing action,' consistent with the identical judgment recorded in 2026-07-28.json's run_notes for the same item.",
+    "CAS: 4 items in the 7-day window. 2 already in seen.json from 2026-07-28 (CAS AI Primer 2nd edition; 2025 Variance Prize). Remaining 2 dropped: an FY2027 webinar-subscription announcement (admin, no LOB content) and an NAIC homeowners insurance rate-regulation white-paper comment period (explicitly homeowners/personal lines). 0 new kept -- expected result under the commercial P&C filter.",
+    "SOA: general-insurance research landing page (soa.org/research/topics/general-ins-landing/) showed no items published in the 7-day window; the page's own note confirms nothing published since 2026-07-24 in this section, and soa.org/news-and-publications/ 404'd. 0 kept -- expected null result under 3a, not a fetch failure.",
+    "IFoA: both /news-and-insights and /news returned an archived-page notice with no retrievable news content (site restructuring since the last successful fetch). Recorded as an access issue rather than a confirmed zero-item result -- could not verify what, if anything, IFoA published this week.",
+    "The Actuary Magazine: feed returned successfully but the most recent item is dated 16 July 2026, outside the 7-day window (2026-07-23 onward). 0 kept.",
+    "InsuranceERM: skipped per standing guidance -- confirmed Cloudflare block, not retried.",
+    "arXiv export API (export.arxiv.org/api/query) returned HTTP 429/503 rate-limit errors on both cs.LG and stat.ML queries after one retry each; fell back to the rss.arxiv.org/rss/cs.LG and rss.arxiv.org/rss/stat.ML feeds per the documented fallback, which returned HTTP 200 with 245 and 35 items respectively (both dated 2026-07-29, a daily digest of new submissions).",
+    "Data Science: screened both feeds by keyword against the 3b keep list (insurance, actuarial, claims, survival analysis, tabular, calibration, conformal prediction, uncertainty quantification, heavy-tailed, catastrophe, climate, etc.) across full abstracts, then read full abstracts for the strongest candidates. Kept 5: FinAbstain (calibrated/abstaining financial forecasting), OOD evaluation of tabular foundation models, bias-corrected Cox regression with AI-extracted covariates, Generalised Robust Bayes for joint model/contamination inference, and Student's t likelihood for Bayesian neural networks. Passed over as too narrow or not transferable: 'HeAD-CP' conformal prediction for heterophilic graph neural networks (genuine conformal-prediction keyword match but a narrow GNN-benchmark contribution with no stated insurance/actuarial transfer) and 'Human Preference aligned Tabular Similarity' (tabular embeddings for a Product Lifecycle Management similarity-search use case, not predictive modeling).",
+    "Hugging Face trending papers: today's list is robotics/multimodal/video-generation heavy (HiFi-UMI manipulation policies, ReDesign image-to-design, Mage-VL streaming multimodal model, NVIDIA video-generation distillation) -- 0 items passing 3b.",
+    "Towards Data Science: reviewed all 20 feed items. Two (the Adam-optimizer piece and the active-learning piece) were already in seen.json from 2026-07-28. The rest are general AI-engineering/tooling explainers (vehicle-routing heuristics, MCP explainer, local-LLM wattage-cost measurement, backpropagation tutorial, vector-search infrastructure) without actuarial, tabular-modeling, or uncertainty-quantification substance under 3b. 'Tabular LLMs: An Introduction to the Foundation Models That Predict Your Spreadsheet' (published 2026-07-24) is topically on point but falls outside the 24-48h data-science window relative to this run. 0 kept.",
+    "Google Research blog: most recent post remains 'SymptomAI' dated 2026-07-22, outside the 24-48h window. 0 items.",
+    "Totals: 17 actuarial items, 5 data science items, 22 new items total for 2026-07-29. Actuarial landed above the 5-8 target given the six commercial-lines trade feeds' continued high yield after dedup against yesterday's seen.json; data science landed below target primarily because arXiv's rate-limiting cost time better spent reading full abstracts on a smaller, higher-confidence candidate set rather than casting wider."
+  ]
+}
