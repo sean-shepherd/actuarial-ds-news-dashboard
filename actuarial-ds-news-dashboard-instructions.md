@@ -49,10 +49,16 @@ group and employer-sponsored benefits; all personal lines; and reinsurance/ILS w
 capital-markets mechanics rather than the underlying commercial exposure.
 
 This filter is deliberately narrow. SOA will often yield zero items, since it is the life and health
-body, and Artemis will lose most of its ILS deal flow. The Actuarial section is therefore expected to
-run below the 5–8 target on many days. Do not pad to reach the target and do not relax the filter to
-fill space — report the shortfall instead. See `.claude/agents/news-dashboard.md` §3a for the full
-keep/drop lists.
+body, and Artemis will lose most of its ILS deal flow — those two are expected null results, not
+failures.
+
+The section as a whole, however, should now reach 5–8 items routinely: the six commercial-lines trade
+feeds added 2026-07-28 supply the volume the institutions never did (the first run with them produced 25
+Actuarial items). So a thin Actuarial section is a finding to report — name the feeds that were dry —
+rather than the normal state of affairs.
+
+Do not pad to reach the target and do not relax the filter to fill space. See
+`.claude/agents/news-dashboard.md` §3a for the full keep/drop lists.
 
 The Data Science section is not subject to this filter.
 

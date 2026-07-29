@@ -6,7 +6,7 @@
 #   ./refresh.sh --no-push    same, but stop after the commit — nothing leaves your machine
 #   ./refresh.sh --build-only re-render index.html from existing snapshots; fetches nothing
 #
-# The scheduled cloud routine does the same thing every morning at 8am. Running this by hand is
+# The scheduled cloud routine does the same thing every morning at 10am. Running this by hand is
 # safe alongside it: today's snapshot is simply rebuilt rather than duplicated, and if the routine
 # pushed first, the push below rebases onto it.
 

@@ -11,9 +11,9 @@ The dashboard keeps a historical baseline spanning the last three years and also
 
 ## How it works
 
-A scheduled Claude Code cloud agent runs every morning at 8:00 AM Toronto time, year-round.
-(Cron is UTC-only and can't follow daylight saving, so the routine fires at both 12:00 and 13:00
-UTC and no-ops whichever firing isn't 8:00 AM local — see [`.claude/routine.json`](.claude/routine.json).)
+A scheduled Claude Code cloud agent runs every morning at 10:00 AM Toronto time, year-round.
+(Cron is UTC-only and can't follow daylight saving, so the routine fires at both 14:00 and 15:00
+UTC and no-ops whichever firing isn't 10:00 AM local — see [`.claude/routine.json`](.claude/routine.json).)
 Each run:
 
 1. Fetches the sources listed in [`actuarial-ds-news-dashboard-instructions.md`](actuarial-ds-news-dashboard-instructions.md)
@@ -42,7 +42,7 @@ refresh and is filterable by date.
 
 ## Running it manually
 
-You don't have to wait for the 8am routine.
+You don't have to wait for the 10am routine.
 
 ### The Refresh button
 

@@ -1,9 +1,9 @@
 {
   "_comment": "Reference copy of the live daily routine (trig_011WCaBkju3UMBApJV2QZ2W6). Manage at https://claude.ai/code/routines/trig_011WCaBkju3UMBApJV2QZ2W6. Editing this file does NOT change the live routine — it must be pushed via the RemoteTrigger API.",
-  "_dst_note": "Cron is fixed UTC and cannot follow daylight saving, so this fires TWICE daily — 12:00 and 13:00 UTC. Exactly one of those is 08:00 in America/Toronto year-round (12:00 UTC during EDT, 13:00 UTC during EST). STEP 0 checks the local hour and no-ops the other firing. Do not remove an hour without also removing the guard.",
+  "_dst_note": "Cron is fixed UTC and cannot follow daylight saving, so this fires TWICE daily — 14:00 and 15:00 UTC. Exactly one of those is 10:00 in America/Toronto year-round (14:00 UTC during EDT, 15:00 UTC during EST). STEP 0 checks the local hour and no-ops the other firing. Do not remove an hour without also removing the guard.",
   "_prompt_note": "The prompt deliberately defers to .claude/agents/news-dashboard.md and actuarial-ds-news-dashboard-instructions.md, which change often. The inline restatement is a safety net for the mistakes that have actually happened (overwrite instead of merge, missing item_type, deep reads instead of headline-first). When the spec changes materially, update this prompt too — a stale prompt that contradicts the repo files is worse than a short one.",
-  "name": "Daily Actuarial & DS News Dashboard (8am Toronto)",
-  "cron_expression": "0 12,13 * * *",
+  "name": "Daily Actuarial & DS News Dashboard (10am Toronto)",
+  "cron_expression": "0 14,15 * * *",
   "enabled": true,
   "mcp_connections": [
     {
@@ -36,7 +36,7 @@
             "parent_tool_use_id": null,
             "message": {
               "role": "user",
-              "content": "See the live routine for the authoritative prompt. Summary of its five steps: (0) DST guard — exit unless TZ=America/Toronto hour is 08, and send no Slack message when skipping; (1) read .claude/agents/news-dashboard.md and actuarial-ds-news-dashboard-instructions.md, which win over the prompt; (2) run — merge never overwrite, never reset seen.json, Actuarial 7-day window and Data Science 24-48h, headline-first 3-sentence summaries, item_type required on every item, commercial P&C filter on Actuarial, six commercial-lines trade feeds first with a curl fallback for Business Insurance, skip InsuranceERM; (3) commit and push, rebasing if rejected; (4) send exactly one short Slack DM to U0BGG3J1S8Y after a successful push, and none if the run skipped or failed, so a missing message signals breakage; (5) report new-item count separately from the total, plus per-source outcomes."
+              "content": "See the live routine for the authoritative prompt. Summary of its five steps: (0) DST guard — exit unless TZ=America/Toronto hour is 10, and send no Slack message when skipping; (1) read .claude/agents/news-dashboard.md and actuarial-ds-news-dashboard-instructions.md, which win over the prompt; (2) run — merge never overwrite, never reset seen.json, Actuarial 7-day window and Data Science 24-48h, headline-first 3-sentence summaries, item_type required on every item, commercial P&C filter on Actuarial, six commercial-lines trade feeds first with a curl fallback for Business Insurance, skip InsuranceERM; (3) commit and push, rebasing if rejected; (4) send exactly one short Slack DM to U0BGG3J1S8Y after a successful push, and none if the run skipped or failed, so a missing message signals breakage; (5) report new-item count separately from the total, plus per-source outcomes."
             }
           }
         }
